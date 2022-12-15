@@ -1,0 +1,47 @@
+@import "~bootstrap/scss/bootstrap";
+
+$dark: #283739;
+$light: #e0e0e0;
+$mainGreen: #a2c11c;
+$mainBlue: #2c5d63;
+
+input {
+  display: block;
+}
+
+select {
+  display: block;
+}
+
+.profilePicture {
+  display: block;
+}
+.required:after {
+  content: "*";
+  font-weight: bold;
+}
+
+.form-label {
+  margin-top: 1rem;
+}
+
+nav {
+  height: 85px;
+  img {
+    height: 35px;
+  }
+  p {
+    margin: 0;
+    font-size: 0.7rem;
+  }
+
+  .nav {
+    background-color: $light;
+    padding: 10px;
+
+    .container {
+      // max-width: 450px;
+      margin: 0 auto;
+    }
+  }
+}
