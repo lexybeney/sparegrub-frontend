@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { CREATE_USER, LON_AND_LAT, SET_SCREEN_MODE } from "../../redux/types";
-import { findLonAndLat } from "./userLocation";
+import { CREATE_USER, SET_SCREEN_MODE } from "../../redux/types";
 import { validate } from "../../validation";
 import { formToObject } from "./utils";
 import Range from "./Range";
-import ProfilePicture from "./ProfilePicture";
 import SignupFields from "./SignupFields";
 import { Container, Form, Button } from "react-bootstrap";
 
@@ -16,15 +14,9 @@ const Signup = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const formObj = formToObject(e.target.elements);
-    const result = validate("User Information", formObj);
-
-    async function findLocation(postcode) {
-      const result = await findLonAndLat(postcode);
-      dispatch({ type: LON_AND_LAT, payload: result });
-    }
+    const result = validate("Signup", formObj);
 
     if (result === true) {
-      findLocation(formObj.postcode);
       dispatch({ type: CREATE_USER, payload: formObj });
       dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
     } else {
@@ -44,7 +36,6 @@ const Signup = () => {
         <Form id="signupForm" onSubmit={onSubmit}>
           <SignupFields errors={errors} />
           <Range />
-          <ProfilePicture />
           <Button className="mt-4" type="submit" variant="primary">
             Submit
           </Button>

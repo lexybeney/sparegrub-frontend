@@ -1,7 +1,7 @@
 import Joi from "joi";
 const joiPostalCode = Joi.extend(require("joi-postalcode"));
 
-export const userInformationSchema = {
+export const signUpSchema = {
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .required(),
@@ -17,4 +17,9 @@ export const addItemToListingSchema = {
   item: Joi.string().required(),
   quantity: Joi.string().required(),
   location: Joi.string().required(),
+};
+
+export const loginSchema = {
+  username: Joi.string().required(),
+  password: Joi.string().required(),
 };

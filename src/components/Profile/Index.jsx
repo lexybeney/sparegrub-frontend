@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { EDIT_PROFILE, LON_AND_LAT } from "../../redux/types";
+import { EDIT_PROFILE } from "../../redux/types";
 import Navigation from "../Navigation/Index";
 import ProfileFields from "./ProfileFields";
 import { useSelector, useDispatch } from "react-redux";
 import { formToObject } from "../../components/Signup/utils";
 import { validate } from "../../validation";
-import { findLonAndLat } from "../Signup/userLocation";
 
 const Profile = () => {
   const [editing, setEditing] = useState(false);
@@ -23,14 +22,8 @@ const Profile = () => {
     if (editing) {
       const formObj = formToObject(e.target.elements);
 
-      async function findLocation(postcode) {
-        const result = await findLonAndLat(postcode);
-        dispatch({ type: LON_AND_LAT, payload: result });
-      }
-
-      const result = validate("User Information", formObj);
+      const result = validate("Profile edit", formObj);
       if (result === true) {
-        findLocation(formObj.postcode);
         dispatch({ type: EDIT_PROFILE, payload: formObj });
         setErrors((errors = {}));
         setEditing(!editing);
@@ -47,12 +40,7 @@ const Profile = () => {
   return (
     <>
       <h1>My Profile</h1>
-      <img
-        src="https://www.scotsman.com/webimg/b25lY21zOmFmM2U5NGMyLTMxNDgtNGFhMS05MmRlLTQwNjc2NGM0Mjg0YToyMWI3MWI0OC02MDM3LTRiMTctYWVlMi1lMDFmOTUwY2FjYmM=.jpg?quality=65&smart&width=990"
-        alt={user.username}
-        height="60px"
-        className="profilePicture"
-      />
+      <p>Profile picture</p>
       <form onSubmit={onSubmit}>
         <button type="submit">{editing ? "Save" : "Edit"}</button>
         <ProfileFields

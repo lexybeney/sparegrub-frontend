@@ -11,7 +11,6 @@ import {
   ADDITIONAL_INFORMATION,
   CHECKOUT,
   CHECKED_OUT_ITEM_COLLECTED,
-  LON_AND_LAT,
 } from "./types";
 import { getItem } from "../localStorage";
 import { storeItem } from "../localStorage";
@@ -137,19 +136,7 @@ export function reducer(state = getItem("store") || initialState, action) {
 
       return newState;
     }
-    case LON_AND_LAT: {
-      const user = { ...state.user };
-      user.location = {};
 
-      user.location.longitude = action.payload.longitude;
-      user.location.latitude = action.payload.latitude;
-
-      const newState = { ...state, user };
-
-      storeItem("store", newState);
-
-      return newState;
-    }
     case ADDITIONAL_INFORMATION: {
       const availableItems = { ...state.availableItems };
 

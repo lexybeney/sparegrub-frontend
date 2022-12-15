@@ -1,13 +1,23 @@
 import { jValidate } from "./joi";
-import { userInformationSchema, addItemToListingSchema } from "./joiSchemas";
+import {
+  signUpSchema,
+  addItemToListingSchema,
+  loginSchema,
+} from "./joiSchemas";
 
 export const validate = (type, payload) => {
   switch (type) {
-    case "User Information":
-      return jValidate(userInformationSchema, payload);
+    case "Signup":
+      return jValidate(signUpSchema, payload);
+
+    case "Login":
+      return jValidate(loginSchema, payload);
 
     case "Add item to listing":
       return jValidate(addItemToListingSchema, payload);
+
+    case "Profile edit":
+      return jValidate(signUpSchema, payload);
 
     default:
       console.log("Invalid type for validation sent in");
