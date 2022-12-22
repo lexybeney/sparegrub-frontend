@@ -1,11 +1,13 @@
 import React from "react";
+import { Container } from "react-bootstrap";
+import logo from "../assets/images/logos/logo_dark_bg.svg";
 
 const Loading = () => {
   return (
-    <>
-      <h1>Welcome to SpareGrub!</h1>
-      <p>Greensock animation to go here</p>
-    </>
+    <div className="welcomePage">
+      <img src={logo} alt="SpareGrub Logo" />
+      <h1>Welcome!</h1>
+    </div>
   );
 };
 

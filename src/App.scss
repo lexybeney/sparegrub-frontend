@@ -25,6 +25,27 @@ select {
   margin-top: 1rem;
 }
 
+.welcomePage {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: $mainBlue;
+  align-content: center;
+
+  img {
+    height: 50vh;
+  }
+
+  h1 {
+    color: $light;
+    font-size: 10vh;
+  }
+  p {
+    color: $dark;
+  }
+}
+
 nav {
   height: 85px;
   img {
