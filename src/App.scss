@@ -25,24 +25,16 @@ select {
   margin-top: 1rem;
 }
 
-.welcomePage {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+.header {
+  height: 70px;
   background-color: $mainBlue;
-  align-content: center;
+  display: flex;
+  margin-bottom: 20px;
 
   img {
-    height: 50vh;
-  }
-
-  h1 {
-    color: $light;
-    font-size: 10vh;
-  }
-  p {
-    color: $dark;
+    height: 150px;
+    align-self: center;
+    margin-left: 20px;
   }
 }
 
@@ -65,5 +57,26 @@ nav {
       // max-width: 450px;
       margin: 0 auto;
     }
+  }
+}
+
+.welcomePage {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: $mainBlue;
+  align-content: center;
+
+  img {
+    height: 50vh;
+  }
+
+  h1 {
+    color: $light;
+    font-size: 10vh;
+  }
+  p {
+    color: $dark;
   }
 }

@@ -8,12 +8,16 @@ import Notifications from "./Notifications/Index";
 import Listing from "./Listing/Index";
 import AddToListing from "./Home/AddToListing/Index";
 import Login from "./Login/Index";
+import logo from "../assets/images/logos/logo_dark_bg.svg";
 
 const Interface = () => {
   const screenMode = useSelector((state) => state.screenMode);
 
   return (
     <>
+      <div className="header">
+        <img src={logo} alt="SpareGrub Logo" />
+      </div>
       {screenMode === "Login" && <Login />}
       {screenMode === "Signup" && <Signup />}
       {screenMode === "Home" && <Home />}
