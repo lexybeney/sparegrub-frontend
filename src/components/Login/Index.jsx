@@ -31,7 +31,6 @@ const Login = () => {
     <>
       <Container>
         <h1>Login</h1>
-
         <Form id="signupForm" onSubmit={onSubmit}>
           <Form.Group className="mb-3" controlId="username">
             <Form.Label>Username*</Form.Label>

@@ -9,7 +9,7 @@ const Home = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <h1>Home 2</h1>
+      <h1>Home</h1>
       <Search />
       <AvailableItems />
       <button
