@@ -18,15 +18,17 @@ const Interface = () => {
       <div className="header">
         <img src={logo} alt="SpareGrub Logo" />
       </div>
-      {screenMode === "Login" && <Login />}
-      {screenMode === "Signup" && <Signup />}
-      {screenMode === "Home" && <Home />}
-      {screenMode === "Basket" && <Basket />}
-      {screenMode === "Profile" && <Profile />}
-      {/* {screenMode === "Notifications" && <Notifications />} */}
-      {screenMode === "Listing" && <Listing />}
-      {screenMode === "AddToListing" && <AddToListing />}
-      {/* {screenMode === "Post Checkout" && <PostCheckout />} */}
+      <div className="mainContainer">
+        {screenMode === "Login" && <Login />}
+        {screenMode === "Signup" && <Signup />}
+        {screenMode === "Home" && <Home />}
+        {screenMode === "Basket" && <Basket />}
+        {screenMode === "Profile" && <Profile />}
+        {/* {screenMode === "Notifications" && <Notifications />} */}
+        {screenMode === "Listing" && <Listing />}
+        {screenMode === "AddToListing" && <AddToListing />}
+        {/* {screenMode === "Post Checkout" && <PostCheckout />} */}
+      </div>
     </>
   );
 };
