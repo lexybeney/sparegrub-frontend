@@ -30,7 +30,7 @@ const ListingItem = (props) => {
           <p>Extra details: {extra_details}</p>
           <p>Collection details: {collection_details}</p>
           <p>Added on: {new Date(dateAdded).toDateString()}</p>
-          <Button variant="outline-danger" onClick={remove}>
+          <Button variant="outline-warning" onClick={remove}>
             Remove
           </Button>
         </Accordion.Body>

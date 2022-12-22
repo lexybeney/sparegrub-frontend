@@ -1,9 +1,27 @@
-@import "~bootstrap/scss/bootstrap";
-
 $dark: #283739;
 $light: #e0e0e0;
 $mainGreen: #a2c11c;
 $mainBlue: #2c5d63;
+
+//import bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+//override bootstrap presets
+$theme-colors: (
+  "primary": $mainGreen,
+  "warning": $mainBlue,
+);
+
+$accordion-button-active-bg: white;
+$accordion-button-active-color: black;
+$accordion-button-focus-border-color: $mainBlue;
+$accordion-button-focus-box-shadow: 0px 0px 5px 1px rgb(44, 93, 99, 0.5);
+//reimport updated bootstrap styles
+@import "~bootstrap/scss/bootstrap";
+
+//
+//start of my own styling
+//
 
 input {
   display: block;
