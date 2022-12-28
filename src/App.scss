@@ -83,6 +83,27 @@ nav {
   }
 }
 
+.welcomePage {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: $mainBlue;
+  align-content: center;
+
+  img {
+    height: 50vh;
+  }
+
+  h1 {
+    color: $light;
+    font-size: 10vh;
+  }
+  p {
+    color: $dark;
+  }
+}
+
 h1 {
   text-align: center;
   color: $dark;
@@ -92,24 +113,11 @@ h1 {
 .mainContainer {
   margin-top: $headerHeight + 15px;
 
-  .welcomePage {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: $mainBlue;
-    align-content: center;
-
-    img {
-      height: 50vh;
-    }
-
-    h1 {
-      color: $light;
-      font-size: 10vh;
-    }
-    p {
-      color: $dark;
+  .loginPage {
+    max-width: 500px;
+    .loginButton {
+      margin: 0 auto;
+      //how to centre align a BS button?
     }
   }
 
@@ -143,4 +151,8 @@ h1 {
       }
     }
   }
+}
+
+.clearStorage {
+  z-index: 100000000000000;
 }

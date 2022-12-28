@@ -4,6 +4,7 @@ import { SET_SCREEN_MODE } from "../../redux/types";
 import { Button, Form, Container } from "react-bootstrap";
 import { formToObject } from "../Signup/utils";
 import { validate } from "../../validation";
+import axios from "axios";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -13,14 +14,20 @@ const Login = () => {
     dispatch({ type: SET_SCREEN_MODE, payload: "Signup" });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formObj = formToObject(e.target.elements);
     const result = validate("Login", formObj);
 
     if (result === true) {
-      console.log("SUCCESS");
-      console.log(formObj);
+      const user_name = formObj.username;
+      const password = formObj.password;
+      const results = await axios.post("https://api.sparegrub.co.uk/login", {
+        user_name: { user_name },
+        password: { password },
+      });
+
+      console.log(results);
     } else {
       console.log(result);
       setErrors((errors = result));
@@ -29,9 +36,9 @@ const Login = () => {
 
   return (
     <>
-      <Container>
+      <Container className="loginPage">
         <h1>Login</h1>
-        <Form id="signupForm" onSubmit={onSubmit}>
+        <Form id="loginForm" onSubmit={onSubmit}>
           <Form.Group className="mb-3" controlId="username">
             <Form.Label>Username*</Form.Label>
             <Form.Control
@@ -55,7 +62,7 @@ const Login = () => {
             </Form.Text>
           </Form.Group>
 
-          <Button className="mt-4" type="submit" variant="primary">
+          <Button className="mt-4 loginButton" type="submit" variant="primary">
             Login
           </Button>
         </Form>

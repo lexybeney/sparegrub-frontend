@@ -21,7 +21,9 @@ const App = () => {
 
   return (
     <>
-      <Button onClick={() => localStorage.clear()}>Clear Local Storage</Button>
+      <Button className="clearStorage" onClick={() => localStorage.clear()}>
+        Clear Local Storage
+      </Button>
       {loading ? <Loading /> : <Interface />}
     </>
   );
