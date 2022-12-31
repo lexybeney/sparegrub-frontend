@@ -41,8 +41,6 @@ const Navigation = () => {
     return (item.screenMode = false);
   });
 
-  console.log(navigationSchema);
-
   return (
     <>
       <nav>

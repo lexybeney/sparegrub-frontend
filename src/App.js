@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SET_SCREEN_MODE } from "./redux/types";
 import Interface from "./components/Interface";
 // import "./App.css";
@@ -10,10 +10,11 @@ import { Button } from "react-bootstrap";
 const App = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const userToken = useSelector((state) => state.token);
 
   useEffect(() => {
     setTimeout(() => {
-      const payload = "Login";
+      const payload = userToken ? "Home" : "Login";
       dispatch({ type: SET_SCREEN_MODE, payload });
       setLoading(false);
     }, 1500);

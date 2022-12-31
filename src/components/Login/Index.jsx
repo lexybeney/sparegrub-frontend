@@ -9,6 +9,7 @@ import axios from "axios";
 const Login = () => {
   const dispatch = useDispatch();
   let [errors, setErrors] = useState({});
+  let [loginError, setloginError] = useState();
 
   const signup = () => {
     dispatch({ type: SET_SCREEN_MODE, payload: "Signup" });
@@ -28,8 +29,15 @@ const Login = () => {
         password,
       });
       console.log(results);
-      console.log(results.data.token);
-      dispatch({ type: ADD_TOKEN, payload: results.data.token });
+
+      if (results.data.status === 0) {
+        console.log("LoginError");
+        setloginError((loginError = results.data.error));
+        console.log(loginError);
+      } else {
+        setloginError((loginError = ""));
+        dispatch({ type: ADD_TOKEN, payload: results.data.token });
+      }
     } else {
       console.log(result);
       setErrors((errors = result));
@@ -63,7 +71,7 @@ const Login = () => {
               {errors.password ? errors.password : " "}
             </Form.Text>
           </Form.Group>
-
+          <p className="text-danger">{loginError ? loginError : " "}</p>
           <Button className="mt-4 loginButton" type="submit" variant="primary">
             Login
           </Button>
