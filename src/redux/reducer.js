@@ -11,6 +11,7 @@ import {
   ADDITIONAL_INFORMATION,
   CHECKOUT,
   CHECKED_OUT_ITEM_COLLECTED,
+  ADD_TOKEN,
 } from "./types";
 import { getItem } from "../localStorage";
 import { storeItem } from "../localStorage";
@@ -18,16 +19,15 @@ import { generateRandomId, findIndexUsingId } from "../utils";
 
 export function reducer(state = getItem("store") || initialState, action) {
   switch (action.type) {
+    case ADD_TOKEN: {
+      const newState = { ...state, token: action.payload };
+      storeItem("store", newState);
+      return newState;
+    }
+
     case CREATE_USER: {
-      const {
-        username,
-        password,
-        phoneNumber,
-        postcode,
-        range,
-        profilePicture,
-        email,
-      } = action.payload;
+      const { username, password, phoneNumber, postcode, range, email } =
+        action.payload;
       const user = {
         userId: generateRandomId(),
         username,
@@ -36,7 +36,6 @@ export function reducer(state = getItem("store") || initialState, action) {
         phoneNumber,
         postcode,
         range,
-        profilePicture: profilePicture,
         signupDate: Date.now(),
       };
 
@@ -80,8 +79,11 @@ export function reducer(state = getItem("store") || initialState, action) {
 
       return newState;
     }
-    case SET_SCREEN_MODE:
-      return { ...state, screenMode: action.payload };
+    case SET_SCREEN_MODE: {
+      const newState = { ...state, screenMode: action.payload };
+      storeItem("store", newState);
+      return newState;
+    }
 
     case ADD_TO_LISTING: {
       const userListing = state.userListing ? [...state.userListing] : [];

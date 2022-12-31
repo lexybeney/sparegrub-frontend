@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { SET_SCREEN_MODE } from "../../redux/types";
+import { ADD_TOKEN, SET_SCREEN_MODE } from "../../redux/types";
 import { Button, Form, Container } from "react-bootstrap";
 import { formToObject } from "../Signup/utils";
 import { validate } from "../../validation";
@@ -22,12 +22,14 @@ const Login = () => {
     if (result === true) {
       const user_name = formObj.username;
       const password = formObj.password;
+      setErrors((errors = {}));
       const results = await axios.post("https://api.sparegrub.co.uk/login", {
-        user_name: { user_name },
-        password: { password },
+        user_name,
+        password,
       });
-
       console.log(results);
+      console.log(results.data.token);
+      dispatch({ type: ADD_TOKEN, payload: results.data.token });
     } else {
       console.log(result);
       setErrors((errors = result));
