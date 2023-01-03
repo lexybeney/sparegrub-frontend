@@ -2,15 +2,30 @@ import React from "react";
 import { profileSchema } from "./profileSchema";
 import { useSelector } from "react-redux";
 import { rangeOptions } from "../Signup/rangeOptions";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const ProfileFields = (props) => {
-  const userProfile = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);
+  const [userProfile, setUserProfile] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios.get("https://api.sparegrub.co.uk/read/user", {
+        headers: {
+          token,
+        },
+      });
+      setUserProfile(result.data.results[0]);
+    }
+    fetchData();
+  }, []);
 
   const { editing, passwordIsHidden, errors, showPassword } = props;
-  let hiddenPassword = "";
-  for (let i = 0; i < userProfile.password.length; i++) {
-    hiddenPassword += "*";
-  }
+  // let hiddenPassword = "";
+  // for (let i = 0; i < userProfile.password.length; i++) {
+  //   hiddenPassword += "*";
+  // }
 
   return (
     <>
@@ -38,9 +53,9 @@ const ProfileFields = (props) => {
         Range:{" "}
         {editing ? (
           <select
-            name="range"
+            name="range_preference"
             placeholder="Range"
-            defaultValue={userProfile.range}
+            defaultValue={userProfile.range_preference}
           >
             {rangeOptions.map((distance) => {
               return (
@@ -51,10 +66,10 @@ const ProfileFields = (props) => {
             })}
           </select>
         ) : (
-          userProfile.range
+          userProfile.range_preference
         )}
       </div>
-      <div>
+      {/* <div>
         Password:{" "}
         {editing ? (
           <>
@@ -73,7 +88,7 @@ const ProfileFields = (props) => {
         <button type="button" onClick={showPassword}>
           {passwordIsHidden ? "Show password" : "Hide password"}
         </button>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -13,6 +13,16 @@ export const signUpSchema = {
   profilePicture: Joi.any(),
 };
 
+export const profileEditSchema = {
+  email: Joi.string()
+    .email({ tlds: { allow: false } })
+    .required(),
+  user_name: Joi.string().required(),
+  phone_number: Joi.string().required(),
+  range: Joi.required(),
+  postcode: joiPostalCode.string().postalCode("GB"),
+};
+
 export const addItemToListingSchema = {
   item: Joi.string().required(),
   quantity: Joi.string().required(),

@@ -21,21 +21,18 @@ const Login = () => {
     const result = validate("Login", formObj);
 
     if (result === true) {
-      console.log("Success");
       setErrors((errors = {}));
       const results = await axios.post("https://api.sparegrub.co.uk/login", {
         user_name: formObj.username,
         password: formObj.password,
       });
-      console.log(results);
 
       if (results.data.status === 0) {
-        console.log("LoginError");
         setloginError((loginError = results.data.error));
-        console.log(loginError);
       } else {
         setloginError((loginError = ""));
         dispatch({ type: ADD_TOKEN, payload: results.data.token });
+        dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
       }
     } else {
       console.log(result);

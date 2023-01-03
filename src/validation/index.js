@@ -3,6 +3,7 @@ import {
   signUpSchema,
   addItemToListingSchema,
   loginSchema,
+  profileEditSchema,
 } from "./joiSchemas";
 
 export const validate = (type, payload) => {
@@ -17,7 +18,7 @@ export const validate = (type, payload) => {
       return jValidate(addItemToListingSchema, payload);
 
     case "Profile edit":
-      return jValidate(signUpSchema, payload);
+      return jValidate(profileEditSchema, payload);
 
     default:
       console.log("Invalid type for validation sent in");
