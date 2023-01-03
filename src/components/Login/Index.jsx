@@ -21,12 +21,11 @@ const Login = () => {
     const result = validate("Login", formObj);
 
     if (result === true) {
-      const user_name = formObj.username;
-      const password = formObj.password;
+      console.log("Success");
       setErrors((errors = {}));
       const results = await axios.post("https://api.sparegrub.co.uk/login", {
-        user_name,
-        password,
+        user_name: formObj.username,
+        password: formObj.password,
       });
       console.log(results);
 
