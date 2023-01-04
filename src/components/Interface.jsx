@@ -9,6 +9,7 @@ import Listing from "./Listing/Index";
 import AddToListing from "./Home/AddToListing/Index";
 import Login from "./Login/Index";
 import logo from "../assets/images/logos/logo_dark_bg.svg";
+import { Button } from "react-bootstrap";
 
 const Interface = () => {
   const screenMode = useSelector((state) => state.screenMode);
@@ -17,6 +18,9 @@ const Interface = () => {
     <>
       <div className="header">
         <img src={logo} alt="SpareGrub Logo" />
+        <Button className="clearStorage" onClick={() => localStorage.clear()}>
+          Clear Local Storage
+        </Button>
       </div>
       <div className="mainContainer">
         {screenMode === "Login" && <Login />}

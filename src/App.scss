@@ -51,6 +51,7 @@ select {
   display: flex;
 
   position: fixed;
+  top: 0;
   width: 100vw;
   z-index: 10000;
 
@@ -104,20 +105,31 @@ nav {
   }
 }
 
-h1 {
-  text-align: center;
-  color: $dark;
-  margin-bottom: 30px;
-}
-
 .mainContainer {
-  margin-top: $headerHeight + 15px;
+  margin-top: $headerHeight + 25px;
+
+  h1 {
+    text-align: center;
+    color: $dark;
+    margin-bottom: 30px;
+  }
+
+  .linkText {
+    color: $mainGreen;
+    text-decoration: none;
+  }
 
   .loginPage {
     max-width: 500px;
     .loginButton {
-      margin: 0 auto;
+      display: flex;
+      justify-content: center;
       //how to centre align a BS button?
+    }
+    .signUpLink {
+      margin-top: 100px;
+      display: flex;
+      align-items: center;
     }
   }
 

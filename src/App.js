@@ -5,7 +5,6 @@ import Interface from "./components/Interface";
 // import "./App.css";
 import "./App.scss";
 import Loading from "./components/Loading";
-import { Button } from "react-bootstrap";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,14 +19,7 @@ const App = () => {
     }, 1500);
   }, []);
 
-  return (
-    <>
-      <Button className="clearStorage" onClick={() => localStorage.clear()}>
-        Clear Local Storage
-      </Button>
-      {loading ? <Loading /> : <Interface />}
-    </>
-  );
+  return <>{loading ? <Loading /> : <Interface />}</>;
 };
 
 export default App;

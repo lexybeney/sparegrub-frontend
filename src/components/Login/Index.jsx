@@ -68,14 +68,20 @@ const Login = () => {
             </Form.Text>
           </Form.Group>
           <p className="text-danger">{loginError ? loginError : " "}</p>
-          <Button className="mt-4 loginButton" type="submit" variant="primary">
-            Login
-          </Button>
+          <div className="loginButton">
+            <Button size="lg" className="mt-4" type="submit" variant="primary">
+              Login
+            </Button>
+          </div>
         </Form>
-
-        <p>
-          Don't have an account? <Button onClick={signup}>Sign up here</Button>
-        </p>
+        <div className="signUpLink">
+          <p>
+            Don't have an account? Sign up{" "}
+            <a onClick={signup} as="Button" className="linkText">
+              here
+            </a>
+          </p>
+        </div>
         {/* Just for testing */}
         <button
           onClick={() => {
