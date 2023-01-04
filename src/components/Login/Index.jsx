@@ -5,6 +5,7 @@ import { Button, Form, Container } from "react-bootstrap";
 import { formToObject } from "../Signup/utils";
 import { validate } from "../../validation";
 import axios from "axios";
+import { apiUrl } from "../../sparegrubApi/apiUrl";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Login = () => {
 
     if (result === true) {
       setErrors((errors = {}));
-      const results = await axios.post("https://api.sparegrub.co.uk/login", {
+      const results = await axios.post(`${apiUrl}/login`, {
         user_name: formObj.username,
         password: formObj.password,
       });
@@ -68,7 +69,7 @@ const Login = () => {
             </Form.Text>
           </Form.Group>
           <p className="text-danger">{loginError ? loginError : " "}</p>
-          <div className="loginButton">
+          <div className="submitButton">
             <Button size="lg" className="mt-4" type="submit" variant="primary">
               Login
             </Button>

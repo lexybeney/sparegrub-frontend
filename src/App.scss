@@ -119,13 +119,14 @@ nav {
     text-decoration: none;
   }
 
+  .submitButton {
+    display: flex;
+    justify-content: center;
+  }
+
   .loginPage {
     max-width: 500px;
-    .loginButton {
-      display: flex;
-      justify-content: center;
-      //how to centre align a BS button?
-    }
+
     .signUpLink {
       margin-top: 100px;
       display: flex;

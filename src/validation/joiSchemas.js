@@ -8,7 +8,7 @@ export const signUpSchema = {
   username: Joi.string().required(),
   password: Joi.string().required().min(6),
   phoneNumber: Joi.string().required(),
-  range: Joi.required(),
+  range_preference: Joi.required(),
   postcode: joiPostalCode.string().postalCode("GB"),
   profilePicture: Joi.any(),
 };

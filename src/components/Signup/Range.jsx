@@ -11,7 +11,7 @@ const Range = () => {
         </Form.Label>
         <Form.Select
           id="range"
-          name="range"
+          name="range_preference"
           placeholder="Range"
           defaultValue="5 miles"
         >
