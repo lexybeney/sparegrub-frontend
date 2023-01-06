@@ -76,12 +76,11 @@ const Login = () => {
           </div>
         </Form>
         <div className="signUpLink">
-          <p>
-            Don't have an account? Sign up{" "}
-            <a onClick={signup} as="Button" className="linkText">
-              here
-            </a>
-          </p>
+          <p>Don't have an account? Sign up </p>
+          <Button onClick={signup} className="linkText">
+            {" "}
+            here
+          </Button>
         </div>
         {/* Just for testing */}
         <button
