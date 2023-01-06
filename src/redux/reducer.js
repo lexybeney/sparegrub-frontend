@@ -26,17 +26,15 @@ export function reducer(state = getItem("store") || initialState, action) {
     }
 
     case CREATE_USER: {
-      const { username, password, phoneNumber, postcode, range, email } =
+      const { user_name, phone_number, postcode, range_preference, email, id } =
         action.payload;
       const user = {
-        userId: generateRandomId(),
-        username,
+        id,
+        user_name,
         email,
-        password,
-        phoneNumber,
+        phone_number,
         postcode,
-        range,
-        signupDate: Date.now(),
+        range_preference,
       };
 
       const newState = { ...state, user };

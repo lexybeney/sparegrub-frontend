@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { CREATE_USER, SET_SCREEN_MODE } from "../../redux/types";
+import { ADD_TOKEN, CREATE_USER, SET_SCREEN_MODE } from "../../redux/types";
 import { validate } from "../../validation";
 import { formToObject } from "./utils";
 import Range from "./Range";
@@ -19,6 +19,7 @@ const Signup = () => {
     const result = validate("Signup", formObj);
 
     if (result === true) {
+      setErrors({});
       const {
         email,
         password,
@@ -27,6 +28,7 @@ const Signup = () => {
         range_preference,
         username: user_name,
       } = formObj;
+
       const results = await axios.post(`${apiUrl}/create/user`, {
         email,
         password,
@@ -35,10 +37,22 @@ const Signup = () => {
         range_preference,
         user_name,
       });
-
       console.log(results);
-      // dispatch({ type: CREATE_USER, payload: formObj });
-      // dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
+
+      if (results.data.status === 0) {
+        console.log(results.data.error);
+      } else {
+        const token = results.data.token;
+        const userData = await axios.get(`${apiUrl}/read/user`, {
+          headers: {
+            token,
+          },
+        });
+        const user = userData.data.results[0];
+        dispatch({ type: CREATE_USER, payload: user });
+        dispatch({ type: ADD_TOKEN, payload: token });
+        dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
+      }
     } else {
       console.log(result);
       setErrors((errors = result));
