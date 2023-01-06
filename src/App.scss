@@ -136,6 +136,37 @@ nav {
     }
   }
 
+  .homePage {
+    margin-bottom: $navBarHeight;
+
+    .searchBar {
+      display: flex;
+      justify-content: center;
+      background-color: $mainGreen;
+      border-radius: 10px;
+      padding: 3px 0;
+      width: 200px;
+      margin: 0 auto;
+
+      input {
+        border: none;
+        background-color: transparent;
+        width: 150px;
+        &::placeholder {
+          color: white;
+        }
+        &:focus {
+          outline: none;
+          color: white;
+        }
+      }
+
+      img {
+        height: 30px;
+      }
+    }
+  }
+
   .listingPage {
     margin-bottom: $navBarHeight;
   }
