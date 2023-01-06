@@ -2,30 +2,11 @@ import React from "react";
 import { profileSchema } from "./profileSchema";
 import { useSelector } from "react-redux";
 import { rangeOptions } from "../Signup/rangeOptions";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
 const ProfileFields = (props) => {
-  const token = useSelector((state) => state.token);
-  const [userProfile, setUserProfile] = useState([]);
+  const user = useSelector((state) => state.user);
 
-  useEffect(() => {
-    async function fetchData() {
-      const result = await axios.get("https://api.sparegrub.co.uk/read/user", {
-        headers: {
-          token,
-        },
-      });
-      setUserProfile(result.data.results[0]);
-    }
-    fetchData();
-  }, []);
-
-  const { editing, passwordIsHidden, errors, showPassword } = props;
-  // let hiddenPassword = "";
-  // for (let i = 0; i < userProfile.password.length; i++) {
-  //   hiddenPassword += "*";
-  // }
+  const { editing, errors } = props;
 
   return (
     <>
@@ -39,12 +20,12 @@ const ProfileFields = (props) => {
                 <input
                   name={field.name}
                   type={field.type}
-                  defaultValue={userProfile[fieldName]}
+                  defaultValue={user[fieldName]}
                 />
                 <p>{errors ? errors[fieldName] && errors[fieldName] : ""}</p>
               </>
             ) : (
-              userProfile[fieldName]
+              user[fieldName]
             )}
           </div>
         );
@@ -55,7 +36,7 @@ const ProfileFields = (props) => {
           <select
             name="range"
             placeholder="Range"
-            defaultValue={userProfile.range_preference}
+            defaultValue={user.range_preference}
           >
             {rangeOptions.map((distance) => {
               return (
@@ -66,29 +47,9 @@ const ProfileFields = (props) => {
             })}
           </select>
         ) : (
-          userProfile.range_preference
+          user.range_preference
         )}
       </div>
-      {/* <div>
-        Password:{" "}
-        {editing ? (
-          <>
-            <input
-              name="password"
-              type={passwordIsHidden ? "password" : "text"}
-              defaultValue={userProfile.password}
-            />
-            <p>{errors && errors.password ? errors.password : ""}</p>
-          </>
-        ) : passwordIsHidden ? (
-          hiddenPassword
-        ) : (
-          userProfile.password
-        )}
-        <button type="button" onClick={showPassword}>
-          {passwordIsHidden ? "Show password" : "Hide password"}
-        </button>
-      </div> */}
     </>
   );
 };

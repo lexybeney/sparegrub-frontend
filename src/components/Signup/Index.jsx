@@ -37,7 +37,6 @@ const Signup = () => {
         range_preference,
         user_name,
       });
-      console.log(results);
 
       if (results.data.status === 0) {
         console.log(results.data.error);
