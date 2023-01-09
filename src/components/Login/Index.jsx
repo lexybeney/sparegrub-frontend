@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ADD_TOKEN, SET_SCREEN_MODE } from "../../redux/types";
+import { ADD_TOKEN, SET_SCREEN_MODE, CREATE_USER } from "../../redux/types";
 import { Button, Form, Container } from "react-bootstrap";
 import { formToObject } from "../Signup/utils";
 import { validate } from "../../validation";
@@ -31,9 +31,18 @@ const Login = () => {
       if (results.data.status === 0) {
         setloginError((loginError = results.data.error));
       } else {
+        const token = results.data.token;
         setloginError((loginError = ""));
-        dispatch({ type: ADD_TOKEN, payload: results.data.token });
+        dispatch({ type: ADD_TOKEN, payload: token });
         dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
+
+        const userData = await axios.get(`${apiUrl}/read/user`, {
+          headers: {
+            token,
+          },
+        });
+        const user = userData.data.results[0];
+        dispatch({ type: CREATE_USER, payload: user });
       }
     } else {
       console.log(result);
