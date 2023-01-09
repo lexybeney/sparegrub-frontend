@@ -16,11 +16,11 @@ const AvailableItems = () => {
 
   if (items.length > 0) {
     return (
-      <>
+      <div className="availableItemListing">
         {items.map((item) => {
           return <Item key={item.itemId} item={item} />;
         })}
-      </>
+      </div>
     );
   } else {
     return (

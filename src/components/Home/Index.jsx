@@ -8,9 +8,8 @@ const Home = () => {
   return (
     <>
       <Container className="homePage">
-        <h1>Home</h1>
         <Search />
-        <AvailableItems />
+        <AvailableItems className="availableItemListing" />
       </Container>
       <Navigation />
     </>

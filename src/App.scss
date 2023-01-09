@@ -4,6 +4,7 @@ $mainGreen: #a2c11c;
 $mainBlue: #2c5d63;
 $navBarHeight: 85px;
 $headerHeight: 70px;
+$searchBarHeight: 90px;
 
 //import bootstrap
 @import "~bootstrap/scss/bootstrap";
@@ -138,7 +139,7 @@ nav {
 
   .emptyErrorMessage {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 70px;
   }
 
   .loginPage {
@@ -154,50 +155,70 @@ nav {
   .homePage {
     margin-bottom: $navBarHeight;
 
-    .searchBar {
-      display: flex;
-      justify-content: center;
-      background-color: rgb(162, 193, 28, 0.2);
-      border-radius: 10px;
-      padding: 3px 0;
-      width: 200px;
-      margin: 0 auto;
-      border-color: $mainGreen;
-      border-width: 3px;
-      border-style: solid;
+    .searchArea {
+      width: 100%;
+      background-color: #ffffff;
+      position: fixed;
+      top: $headerHeight;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 20px 0;
+      z-index: 10000;
+      height: $searchBarHeight;
 
-      input {
-        border: none;
-        background-color: transparent;
-        width: 150px;
-        &::placeholder {
-          color: rgb(44, 93, 99, 0.5);
-        }
-        &:focus {
-          outline: none;
-          color: $dark;
-        }
-      }
+      .searchBar {
+        display: flex;
+        justify-content: center;
+        background-color: rgb(162, 193, 28, 0.2);
+        border-radius: 10px;
+        padding: 3px 0;
+        width: 200px;
+        margin: 0 auto;
+        border-color: $mainGreen;
+        border-width: 3px;
+        border-style: solid;
+        align-items: center;
 
-      img {
-        height: 30px;
+        input {
+          border: none;
+          background-color: transparent;
+          width: 150px;
+          &::placeholder {
+            color: rgb(44, 93, 99, 0.5);
+          }
+          &:focus {
+            outline: none;
+            color: $dark;
+          }
+        }
+
+        img {
+          height: 30px;
+        }
       }
     }
 
+    .availableItemListing {
+      margin-top: $headerHeight + $searchBarHeight;
+    }
     .card-body {
-      h4 {
-        margin-bottom: 0;
+      h5 {
+        margin-bottom: 0.5rem;
       }
       p {
-        margin-bottom: 0;
+        margin-bottom: 0.5rem;
       }
+
       .location {
         display: flex;
         align-items: center;
 
+        p {
+          margin-bottom: 0;
+        }
+
         img {
           height: 15px;
-          // display: inline;
         }
       }
 
