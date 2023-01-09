@@ -33,7 +33,6 @@ const Profile = () => {
   return (
     <>
       <h1>My Profile</h1>
-      <p>Profile picture</p>
       <form onSubmit={onSubmit}>
         <button type="submit">{editing ? "Save" : "Edit"}</button>
         <ProfileFields editing={editing} errors={errors} />

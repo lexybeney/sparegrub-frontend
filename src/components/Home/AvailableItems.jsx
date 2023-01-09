@@ -17,7 +17,6 @@ const AvailableItems = () => {
   if (items.length > 0) {
     return (
       <>
-        <h2>Available Items</h2>
         {items.map((item) => {
           return <Item key={item.itemId} item={item} />;
         })}
@@ -25,10 +24,14 @@ const AvailableItems = () => {
     );
   } else {
     return (
-      <>
-        <h2>Available Items</h2>
-        <p>Sorry, there are no items available in your area</p>
-      </>
+      <div className="emptyErrorMessage">
+        <h4>There are no items available within your range!</h4>
+        <br></br>
+        <h4>
+          Try editing your range preference under your profile to see more
+          items.
+        </h4>
+      </div>
     );
   }
 };

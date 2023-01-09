@@ -28,21 +28,8 @@ $min-contrast-ratio: 2;
 //start of my own styling
 //
 
-input {
-  display: block;
-}
-
-select {
-  display: block;
-}
-
-.required:after {
-  content: "*";
-  font-weight: bold;
-}
-
-.form-label {
-  margin-top: 1rem;
+body {
+  color: $dark;
 }
 
 .header {
@@ -84,6 +71,11 @@ nav {
   }
 }
 
+.required:after {
+  content: "*";
+  font-weight: bold;
+}
+
 .welcomePage {
   text-align: center;
   display: flex;
@@ -110,7 +102,6 @@ nav {
 
   h1 {
     text-align: center;
-    color: $dark;
     margin-bottom: 30px;
   }
 
@@ -124,6 +115,30 @@ nav {
   .submitButton {
     display: flex;
     justify-content: center;
+  }
+
+  .btn-listing {
+    display: flex;
+    height: 40px;
+    align-items: center;
+
+    img {
+      height: 20px;
+      margin-right: 5px;
+    }
+
+    p {
+      align-self: flex-start;
+    }
+  }
+
+  .card {
+    margin-top: 20px;
+  }
+
+  .emptyErrorMessage {
+    text-align: center;
+    margin-top: 100px;
   }
 
   .loginPage {
@@ -142,27 +157,52 @@ nav {
     .searchBar {
       display: flex;
       justify-content: center;
-      background-color: $mainGreen;
+      background-color: rgb(162, 193, 28, 0.2);
       border-radius: 10px;
       padding: 3px 0;
       width: 200px;
       margin: 0 auto;
+      border-color: $mainGreen;
+      border-width: 3px;
+      border-style: solid;
 
       input {
         border: none;
         background-color: transparent;
         width: 150px;
         &::placeholder {
-          color: white;
+          color: rgb(44, 93, 99, 0.5);
         }
         &:focus {
           outline: none;
-          color: white;
+          color: $dark;
         }
       }
 
       img {
         height: 30px;
+      }
+    }
+
+    .card-body {
+      h4 {
+        margin-bottom: 0;
+      }
+      p {
+        margin-bottom: 0;
+      }
+      .location {
+        display: flex;
+        align-items: center;
+
+        img {
+          height: 15px;
+          // display: inline;
+        }
+      }
+
+      .btn {
+        margin-top: 10px;
       }
     }
   }
@@ -181,21 +221,6 @@ nav {
     bottom: $navBarHeight - 13px;
     width: 100vw;
     z-index: 1000;
-
-    .btn-listing {
-      display: flex;
-      height: 40px;
-      align-items: center;
-
-      img {
-        height: 20px;
-        margin-right: 5px;
-      }
-
-      p {
-        align-self: flex-start;
-      }
-    }
   }
 }
 
