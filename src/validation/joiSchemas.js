@@ -19,7 +19,7 @@ export const profileEditSchema = {
     .required(),
   user_name: Joi.string().required(),
   phone_number: Joi.string().required(),
-  range: Joi.required(),
+  range_preference: Joi.required(),
   postcode: joiPostalCode.string().postalCode("GB"),
 };
 

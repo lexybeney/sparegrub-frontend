@@ -6,13 +6,21 @@ import addButton from "../../assets/images/icons/plus_sign_white.svg";
 import locationIcon from "../../assets/images/icons/location_blue.svg";
 
 const Item = (props) => {
-  const { item, quantity, location, extra_details, collection_details } =
+  let { item, quantity, location, extra_details, collection_details } =
     props.item;
   const dispatch = useDispatch();
 
   const add = () => {
     dispatch({ type: ADD_TO_BASKET, payload: props.item });
   };
+
+  if (extra_details === null) {
+    extra_details = "N/A";
+  }
+
+  if (collection_details === null) {
+    collection_details = "N/A";
+  }
 
   return (
     <Card body>

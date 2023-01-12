@@ -139,7 +139,7 @@ nav {
 
   .emptyErrorMessage {
     text-align: center;
-    margin-top: 70px;
+    margin-top: $headerHeight + $searchBarHeight + 50px;
   }
 
   .loginPage {

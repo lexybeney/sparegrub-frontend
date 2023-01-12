@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Container className="homePage">
         <Search />
-        <AvailableItems className="availableItemListing" />
+        <AvailableItems />
       </Container>
       <Navigation />
     </>

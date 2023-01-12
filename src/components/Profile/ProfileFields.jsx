@@ -34,7 +34,7 @@ const ProfileFields = (props) => {
         Range:{" "}
         {editing ? (
           <select
-            name="range"
+            name="range_preference"
             placeholder="Range"
             defaultValue={user.range_preference}
           >

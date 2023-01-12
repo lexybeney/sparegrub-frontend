@@ -119,16 +119,22 @@ export function reducer(state = getItem("store") || initialState, action) {
       return newState;
     }
     case EDIT_PROFILE: {
-      const { email, username, password, phoneNumber, postcode, range } =
-        action.payload;
+      const {
+        email,
+        user_name,
+        password,
+        phone_number,
+        postcode,
+        range_preference,
+      } = action.payload;
       const user = { ...state.user };
 
       user.email = email;
-      user.username = username;
+      user.user_name = user_name;
       user.password = password;
-      user.phoneNumber = phoneNumber;
+      user.phone_number = phone_number;
       user.postcode = postcode;
-      user.range = range;
+      user.range_preference = range_preference;
 
       const newState = { ...state, user };
 

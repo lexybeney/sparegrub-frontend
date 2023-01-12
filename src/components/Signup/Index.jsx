@@ -8,6 +8,7 @@ import SignupFields from "./SignupFields";
 import { Container, Form, Button } from "react-bootstrap";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import axios from "axios";
+import { getUserData } from "../../sparegrubApi";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -42,12 +43,8 @@ const Signup = () => {
         console.log(results.data.error);
       } else {
         const token = results.data.token;
-        const userData = await axios.get(`${apiUrl}/read/user`, {
-          headers: {
-            token,
-          },
-        });
-        const user = userData.data.results[0];
+        const user = await getUserData(token);
+        console.log(user);
         dispatch({ type: CREATE_USER, payload: user });
         dispatch({ type: ADD_TOKEN, payload: token });
         dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
