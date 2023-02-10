@@ -12,11 +12,12 @@ const UserListing = () => {
 
   useEffect(() => {
     async function getListing() {
-      const data = await axios.get(`${apiUrl}/read/listing`, {
+      const result = await axios.get(`${apiUrl}/read/listing`, {
         headers: { token },
       });
-      setListing(data.data.results);
-      console.log(data.data.results);
+      if (result.data.status === 1) {
+        setListing(result.data.results);
+      }
     }
     getListing();
   }, []);

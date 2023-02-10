@@ -15,7 +15,7 @@ import {
 } from "./types";
 import { getItem } from "../localStorage";
 import { storeItem } from "../localStorage";
-import { generateRandomId, findIndexUsingId } from "../utils";
+import { findIndexUsingId } from "../utils";
 
 export function reducer(state = getItem("store") || initialState, action) {
   switch (action.type) {
@@ -87,12 +87,6 @@ export function reducer(state = getItem("store") || initialState, action) {
       const userListing = state.userListing ? [...state.userListing] : [];
 
       const item = action.payload;
-
-      item.itemId = generateRandomId();
-
-      item.userId = state.user.userId;
-
-      item.dateAdded = Date.now();
 
       userListing.push(item);
 

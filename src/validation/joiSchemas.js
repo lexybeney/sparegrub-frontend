@@ -24,9 +24,9 @@ export const profileEditSchema = {
 };
 
 export const addItemToListingSchema = {
-  item: Joi.string().required(),
+  item_name: Joi.string().required(),
   quantity: Joi.string().required(),
-  location: Joi.string().required(),
+  collection_location: Joi.string().required(),
 };
 
 export const loginSchema = {

@@ -7,15 +7,19 @@ const ListingFields = (props) => {
 
   return (
     <>
-      <label htmlFor="item">Item:</label>
-      <input type="text" name="item" placeholder="e.g. Apple, Bread" />
-      <p> {errors.item ? errors.item : ""}</p>
-      <label htmlFor="item">Quantity:</label>
+      <label htmlFor="item_name">Item:</label>
+      <input type="text" name="item_name" placeholder="e.g. Apple, Bread" />
+      <p> {errors.item_name ? errors.item_name : ""}</p>
+      <label htmlFor="quantity">Quantity:</label>
       <input type="text" name="quantity" placeholder="e.g. 2 kg" />
       <p> {errors.quantity ? errors.quantity : ""}</p>
-      <label htmlFor="location">Postcode for Collection:</label>
-      <input type="text" name="location" defaultValue={user.postcode}></input>
-      <p> {errors.location ? errors.location : ""}</p>
+      <label htmlFor="collection_location">Postcode for Collection:</label>
+      <input
+        type="text"
+        name="collection_location"
+        defaultValue={user.postcode}
+      ></input>
+      <p> {errors.collection_location ? errors.collection_location : ""}</p>
       <label htmlFor="extra_details">Extra Details:</label>
       <textarea
         cols="40"
