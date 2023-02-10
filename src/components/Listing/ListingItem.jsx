@@ -4,8 +4,15 @@ import { REMOVE_FROM_LISTING } from "../../redux/types";
 import { Button, Accordion } from "react-bootstrap";
 
 const ListingItem = (props) => {
-  let { item, quantity, extra_details, collection_details, dateAdded, itemId } =
-    props.item;
+  let {
+    item_name,
+    quantity,
+    extra_details,
+    collection_details,
+    date_added,
+    item_id,
+    collection_location,
+  } = props.item;
 
   const dispatch = useDispatch();
 
@@ -23,13 +30,14 @@ const ListingItem = (props) => {
 
   return (
     <>
-      <Accordion.Item eventKey={itemId}>
-        <Accordion.Header>{item}</Accordion.Header>
+      <Accordion.Item eventKey={item_id}>
+        <Accordion.Header>{item_name}</Accordion.Header>
         <Accordion.Body>
           <p>Quantity: {quantity}</p>
           <p>Extra details: {extra_details}</p>
           <p>Collection details: {collection_details}</p>
-          <p>Added on: {new Date(dateAdded).toDateString()}</p>
+          <p>Collect from: {collection_location}</p>
+          <p>Added on: {new Date(date_added).toDateString()}</p>
           <Button variant="outline-info" onClick={remove}>
             Remove
           </Button>

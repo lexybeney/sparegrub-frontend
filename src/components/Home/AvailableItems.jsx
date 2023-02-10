@@ -1,10 +1,21 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Item from "./Item";
+import { getAvailableItems } from "../../sparegrubApi";
 
 const AvailableItems = () => {
   const availableItems = useSelector((state) => state.availableItems);
   const searchTerm = useSelector((state) => state.searchTerm);
+  // const token = useSelector((state) => state.token);
+  // let [liveItems, setLiveItems] = useState();
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     return await getAvailableItems(token);
+  //   }
+  //   setLiveItems = fetchData();
+  //   console.log(liveItems);
+  // }, []);
 
   let items = [...availableItems];
 

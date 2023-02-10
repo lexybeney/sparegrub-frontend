@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import ListingFields from "./ListingFields";
 import { useDispatch } from "react-redux";
-import { formToObject } from "../../Signup/utils";
-import { validate } from "../../../validation";
-import { ADD_TO_LISTING, SET_SCREEN_MODE } from "../../../redux/types";
+import { formToObject } from "../Signup/utils";
+import { validate } from "../../validation";
+import { ADD_TO_LISTING, SET_SCREEN_MODE } from "../../redux/types";
 import AddToListingButton from "./AddToListingButton";
 
 const AddToListing = () => {
