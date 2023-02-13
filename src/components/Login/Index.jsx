@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ADD_TOKEN, SET_SCREEN_MODE, CREATE_USER } from "../../redux/types";
+import {
+  ADD_TOKEN,
+  SET_SCREEN_MODE,
+  CREATE_USER,
+  SET_USER_LISTING,
+} from "../../redux/types";
 import { Button, Form, Container } from "react-bootstrap";
 import { formToObject } from "../Signup/utils";
 import { validate } from "../../validation";
 import axios from "axios";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
+import { getUserData, getUserListing } from "../../sparegrubApi";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -35,14 +41,10 @@ const Login = () => {
         setloginError((loginError = ""));
         dispatch({ type: ADD_TOKEN, payload: token });
         dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
-
-        const userData = await axios.get(`${apiUrl}/read/user`, {
-          headers: {
-            token,
-          },
-        });
-        const user = userData.data.results[0];
+        const user = await getUserData(token);
         dispatch({ type: CREATE_USER, payload: user });
+        const userListing = await getUserListing(token);
+        dispatch({ type: SET_USER_LISTING, payload: userListing });
       }
     } else {
       console.log(result);

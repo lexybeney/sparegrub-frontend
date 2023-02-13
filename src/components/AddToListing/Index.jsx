@@ -41,7 +41,7 @@ const AddToListing = () => {
       );
       console.log(result);
       // dispatch({ type: ADD_TO_LISTING, payload: formObj });
-      // dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
+      dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
     } else {
       console.log(result);
       setErrors((errors = result));

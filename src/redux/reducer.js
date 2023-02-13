@@ -12,6 +12,7 @@ import {
   CHECKOUT,
   CHECKED_OUT_ITEM_COLLECTED,
   ADD_TOKEN,
+  SET_USER_LISTING,
 } from "./types";
 import { getItem } from "../localStorage";
 import { storeItem } from "../localStorage";
@@ -83,6 +84,19 @@ export function reducer(state = getItem("store") || initialState, action) {
       return newState;
     }
 
+    case SET_USER_LISTING: {
+      const userListing = {
+        dateDataRetrieved: Date.now(),
+        items: action.payload,
+      };
+
+      const newState = { ...state, userListing };
+
+      storeItem("store", newState);
+
+      return newState;
+    }
+
     case ADD_TO_LISTING: {
       const userListing = state.userListing ? [...state.userListing] : [];
 
@@ -101,7 +115,7 @@ export function reducer(state = getItem("store") || initialState, action) {
 
       const indexOfListedItem = findIndexUsingId(
         userListing,
-        action.payload.itemId
+        action.payload.item_id
       );
 
       userListing.splice(indexOfListedItem, 1);

@@ -1,9 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { REMOVE_FROM_LISTING } from "../../redux/types";
 import { Button, Accordion } from "react-bootstrap";
+import axios from "axios";
+import { apiUrl } from "../../sparegrubApi/apiUrl";
 
 const ListingItem = (props) => {
+  const token = useSelector((state) => state.token);
   let {
     item_name,
     quantity,
@@ -16,8 +19,21 @@ const ListingItem = (props) => {
 
   const dispatch = useDispatch();
 
-  const remove = () => {
-    dispatch({ type: REMOVE_FROM_LISTING, payload: props.item });
+  const remove = async () => {
+    const result = await axios.put(
+      `${apiUrl}/update/item`,
+      {
+        status: "removed",
+        id: item_id,
+      },
+      {
+        headers: {
+          token,
+        },
+      }
+    );
+    console.log(result);
+    // dispatch({ type: REMOVE_FROM_LISTING, payload: props.item });
   };
 
   if (!extra_details) {

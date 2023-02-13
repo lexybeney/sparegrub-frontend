@@ -18,3 +18,14 @@ export const getAvailableItems = async (token) => {
   });
   return result.data.results;
 };
+
+export const getUserListing = async (token) => {
+  const result = await axios.get(`${apiUrl}/read/listing`, {
+    headers: { token },
+  });
+  if (result.data.status === 1) {
+    return result.data.results;
+  } else {
+    return "No items listed for this user";
+  }
+};
