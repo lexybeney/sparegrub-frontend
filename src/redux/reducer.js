@@ -98,11 +98,12 @@ export function reducer(state = getItem("store") || initialState, action) {
     }
 
     case ADD_TO_LISTING: {
-      const userListing = state.userListing ? [...state.userListing] : [];
+      const userListing = state.userListing;
 
       const item = action.payload;
+      item.date_added = Date.now();
 
-      userListing.push(item);
+      userListing.items.push(item);
 
       const newState = { ...state, userListing };
 

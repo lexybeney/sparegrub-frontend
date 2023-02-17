@@ -3,10 +3,15 @@ import ListingFields from "./ListingFields";
 import { useDispatch, useSelector } from "react-redux";
 import { formToObject } from "../Signup/utils";
 import { validate } from "../../validation";
-import { ADD_TO_LISTING, SET_SCREEN_MODE } from "../../redux/types";
+import {
+  ADD_TO_LISTING,
+  SET_SCREEN_MODE,
+  SET_USER_LISTING,
+} from "../../redux/types";
 import AddToListingButton from "./AddToListingButton";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import axios from "axios";
+import { getUserListing } from "../../sparegrubApi";
 
 const AddToListing = () => {
   const token = useSelector((state) => state.token);
@@ -40,8 +45,10 @@ const AddToListing = () => {
         { headers: { token } }
       );
       console.log(result);
-      // dispatch({ type: ADD_TO_LISTING, payload: formObj });
+      dispatch({ type: ADD_TO_LISTING, payload: formObj });
       dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
+      const userListing = await getUserListing(token);
+      dispatch({ type: SET_USER_LISTING, payload: userListing });
     } else {
       console.log(result);
       setErrors((errors = result));
