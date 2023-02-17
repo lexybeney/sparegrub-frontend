@@ -112,16 +112,19 @@ export function reducer(state = getItem("store") || initialState, action) {
       return newState;
     }
     case REMOVE_FROM_LISTING: {
-      const userListing = { ...state.userListing };
+      const listingItems = [...state.userListing.items];
 
       const indexOfListedItem = findIndexUsingId(
-        userListing,
+        listingItems,
         action.payload.item_id
       );
 
-      userListing.splice(indexOfListedItem, 1);
+      listingItems.splice(indexOfListedItem, 1);
 
-      const newState = { ...state, userListing };
+      const newState = {
+        ...state,
+        userListing: { ...state.userListing, items: [...listingItems] },
+      };
 
       storeItem("store", newState);
 

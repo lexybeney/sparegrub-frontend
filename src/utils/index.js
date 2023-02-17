@@ -12,5 +12,5 @@ export function generateRandomId(length = 30) {
 }
 
 export const findIndexUsingId = (listToSearch, id) => {
-  return listToSearch.findIndex((item) => item.itemId === id);
+  return listToSearch.findIndex((item) => item.item_id === id);
 };
