@@ -228,6 +228,34 @@ nav {
     }
   }
 
+  .profilePage {
+    margin: 0 20px;
+
+    .row {
+      margin: 0;
+    }
+    .profileLabel {
+      padding-left: 0;
+    }
+
+    .editButton {
+      background-color: transparent;
+      border: none;
+      color: #a2c11c;
+      font-style: italic;
+      padding-left: 0;
+      margin-bottom: 10px;
+    }
+    .profileField {
+      margin-bottom: 10px;
+      // margin-right: 10px;
+      // padding-bottom: 10px;
+      // padding-left: 0;
+      padding: 0 0 10px 0;
+      border-bottom: 1px solid $mainGreen;
+    }
+  }
+
   .listingPage {
     margin-bottom: $navBarHeight;
   }
@@ -247,4 +275,13 @@ nav {
 
 .clearStorage {
   z-index: 100000000000000;
+}
+
+@media (min-width: 470px) {
+  .mainContainer {
+    .profilePage {
+      margin: 0 auto;
+      max-width: 430px;
+    }
+  }
 }
