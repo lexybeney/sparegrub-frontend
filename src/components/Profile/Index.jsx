@@ -63,7 +63,7 @@ const Profile = () => {
     <div className="profilePage">
       <h1>My Profile</h1>
       <form onSubmit={onSubmit}>
-        <button className="editButton" type="submit">
+        <button className={editing ? "saveButton" : "editButton"} type="submit">
           {editing ? "Save changes" : "Edit my profile"}
         </button>
         <ProfileFields editing={editing} errors={errors} />
