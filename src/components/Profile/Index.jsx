@@ -8,7 +8,7 @@ import { validate } from "../../validation";
 import axios from "axios";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import { getUserData } from "../../sparegrubApi";
-import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 
 const Profile = () => {
   const [editing, setEditing] = useState(false);
@@ -62,12 +62,12 @@ const Profile = () => {
   return (
     <div className="profilePage">
       <h1>My Profile</h1>
-      <form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit}>
         <button className={editing ? "saveButton" : "editButton"} type="submit">
           {editing ? "Save changes" : "Edit my profile"}
         </button>
         <ProfileFields editing={editing} errors={errors} />
-      </form>
+      </Form>
       <Navigation />
     </div>
   );

@@ -2,8 +2,7 @@ import React from "react";
 import { profileSchema } from "./profileSchema";
 import { useSelector } from "react-redux";
 import { rangeOptions } from "../Signup/rangeOptions";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Row, Col, Form } from "react-bootstrap";
 
 const ProfileFields = (props) => {
   const user = useSelector((state) => state.user);
@@ -16,50 +15,56 @@ const ProfileFields = (props) => {
         const fieldName = field.name;
         return (
           <Row key={field.name}>
-            <Col className="profileLabel" xs={5}>
-              {field.label}{" "}
-            </Col>
-            <Col className="profileField">
-              {" "}
-              {editing ? (
-                <>
-                  <input
-                    name={field.name}
-                    type={field.type}
-                    defaultValue={user[fieldName]}
-                  />
-                  <p>{errors ? errors[fieldName] && errors[fieldName] : ""}</p>
-                </>
-              ) : (
-                user[fieldName]
-              )}
-            </Col>
+            <Form.Group>
+              <Col className="profileLabel">
+                <Form.Label>{field.label} </Form.Label>
+              </Col>
+              <Col className="profileField">
+                {" "}
+                {editing ? (
+                  <>
+                    <Form.Control
+                      name={field.name}
+                      type={field.type}
+                      defaultValue={user[fieldName]}
+                    />
+                    <Form.Text>
+                      {errors ? errors[fieldName] && errors[fieldName] : ""}
+                    </Form.Text>
+                  </>
+                ) : (
+                  user[fieldName]
+                )}
+              </Col>
+            </Form.Group>
           </Row>
         );
       })}
       <Row>
-        <Col className="profileLabel" xs={5}>
-          Range{" "}
-        </Col>
-        <Col className="profileField">
-          {editing ? (
-            <select
-              name="range_preference"
-              placeholder="Range"
-              defaultValue={user.range_preference}
-            >
-              {rangeOptions.map((distance) => {
-                return (
-                  <option key={distance.value} value={distance.value}>
-                    {distance.value}
-                  </option>
-                );
-              })}
-            </select>
-          ) : (
-            user.range_preference
-          )}
-        </Col>
+        <Form.Group>
+          <Col className="profileLabel">
+            <Form.Label>Range </Form.Label>
+          </Col>
+          <Col className="profileField">
+            {editing ? (
+              <Form.Select
+                name="range_preference"
+                placeholder="Range"
+                defaultValue={user.range_preference}
+              >
+                {rangeOptions.map((distance) => {
+                  return (
+                    <option key={distance.value} value={distance.value}>
+                      {distance.value}
+                    </option>
+                  );
+                })}
+              </Form.Select>
+            ) : (
+              user.range_preference
+            )}
+          </Col>
+        </Form.Group>
       </Row>
     </>
   );
