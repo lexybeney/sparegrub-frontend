@@ -10,12 +10,13 @@ const AvailableItems = () => {
   const token = useSelector((state) => state.token);
   let [liveItems, setLiveItems] = useState([]);
   const [itemsRetrieved, setItemsRetrieved] = useState(false);
+  const user_id = useSelector((state) => state.user.id);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getAvailableItems(token);
+      const response = await getAvailableItems(token, user_id);
       setLiveItems(response);
-      // setItemsRetrieved(true);
+      setItemsRetrieved(true);
     }
     fetchData();
   }, []);
@@ -31,8 +32,10 @@ const AvailableItems = () => {
   if (itemsRetrieved === false) {
     return (
       <>
-        <h2 className="emptyErrorMessage">Loading...</h2>
-        <Spinner animation="border" />
+        <div className="emptyErrorMessage">
+          {" "}
+          <Spinner animation="border" />.
+        </div>
       </>
     );
   }

@@ -10,10 +10,11 @@ export const getUserData = async (token) => {
   return result.data.results[0];
 };
 
-export const getAvailableItems = async (token) => {
+export const getAvailableItems = async (token, user_id) => {
   const result = await axios.get(`${apiUrl}/read/available-items`, {
     headers: {
       token,
+      user_id,
     },
   });
   return result.data.results;

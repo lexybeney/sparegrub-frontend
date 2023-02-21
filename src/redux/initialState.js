@@ -1,8 +1,6 @@
-import { user, availableItems } from "../fakeApi";
-
 export const initialState = {
-  user: user,
-  availableItems: availableItems,
-
-  // checkedOutItems: [],
+  user: {
+    id: "",
+    user_name: "",
+  },
 };
