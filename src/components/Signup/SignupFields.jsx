@@ -1,7 +1,6 @@
 import React from "react";
 import { signUpFormSchema } from "./signupFormSchema";
 import { Form } from "react-bootstrap";
-import { required } from "joi";
 
 const SignupFields = (props) => {
   return (
