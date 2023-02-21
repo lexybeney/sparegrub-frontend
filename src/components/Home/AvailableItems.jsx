@@ -2,34 +2,46 @@ import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Item from "./Item";
 import { getAvailableItems } from "../../sparegrubApi";
+import Spinner from "react-bootstrap/Spinner";
 
 const AvailableItems = () => {
-  const availableItems = useSelector((state) => state.availableItems);
+  // const availableItems = useSelector((state) => state.availableItems);
   const searchTerm = useSelector((state) => state.searchTerm);
-  // const token = useSelector((state) => state.token);
-  // let [liveItems, setLiveItems] = useState();
+  const token = useSelector((state) => state.token);
+  let [liveItems, setLiveItems] = useState([]);
+  const [itemsRetrieved, setItemsRetrieved] = useState(false);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     return await getAvailableItems(token);
-  //   }
-  //   setLiveItems = fetchData();
-  //   console.log(liveItems);
-  // }, []);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getAvailableItems(token);
+      setLiveItems(response);
+      // setItemsRetrieved(true);
+    }
+    fetchData();
+  }, []);
 
-  let items = [...availableItems];
+  let items = [...liveItems];
 
   if (searchTerm) {
     items = items.filter((product) => {
-      return product.item.toLowerCase().includes(searchTerm.toLowerCase());
+      return product.item_name.toLowerCase().includes(searchTerm.toLowerCase());
     });
+  }
+
+  if (itemsRetrieved === false) {
+    return (
+      <>
+        <h2 className="emptyErrorMessage">Loading...</h2>
+        <Spinner animation="border" />
+      </>
+    );
   }
 
   if (items.length > 0) {
     return (
       <div className="availableItemListing">
         {items.map((item) => {
-          return <Item key={item.itemId} item={item} />;
+          return <Item key={item.id} item={item} />;
         })}
       </div>
     );

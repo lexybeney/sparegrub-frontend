@@ -6,8 +6,13 @@ import addButton from "../../assets/images/icons/plus_sign_white.svg";
 import locationIcon from "../../assets/images/icons/location_blue.svg";
 
 const Item = (props) => {
-  let { item, quantity, location, extra_details, collection_details } =
-    props.item;
+  let {
+    item_name,
+    quantity,
+    collection_location,
+    extra_details,
+    collection_details,
+  } = props.item;
   const dispatch = useDispatch();
 
   const add = () => {
@@ -24,13 +29,13 @@ const Item = (props) => {
 
   return (
     <Card body>
-      <h5>{item}</h5>
+      <h5>{item_name}</h5>
       <p>{`Quantity: ${quantity}`}</p>
       <p>{`Extra details: ${extra_details}`}</p>
       <p>{`Collection details: ${collection_details}`}</p>
       <div className="location">
         <img alt="Location icon" src={locationIcon} />
-        <p>{location}</p>
+        <p>{collection_location}</p>
       </div>
 
       <Button
