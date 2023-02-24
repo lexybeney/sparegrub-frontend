@@ -8,10 +8,10 @@ import {
   SET_SCREEN_MODE,
   SET_USER_LISTING,
 } from "../../redux/types";
-import AddToListingButton from "./AddToListingButton";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import axios from "axios";
 import { getUserListing } from "../../sparegrubApi";
+import { Container, Form, Button } from "react-bootstrap";
 
 const AddToListing = () => {
   const token = useSelector((state) => state.token);
@@ -22,7 +22,6 @@ const AddToListing = () => {
     e.preventDefault();
     const formObj = formToObject(e.target.elements);
     const result = validate("Add item to listing", formObj);
-    console.log(formObj);
 
     const {
       item_name,
@@ -33,7 +32,7 @@ const AddToListing = () => {
     } = formObj;
 
     if (result === true) {
-      const result = await axios.post(
+      await axios.post(
         `${apiUrl}/create/item`,
         {
           item_name,
@@ -44,32 +43,37 @@ const AddToListing = () => {
         },
         { headers: { token } }
       );
-      console.log(result);
+
       dispatch({ type: ADD_TO_LISTING, payload: formObj });
-      dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
+      dispatch({ type: SET_SCREEN_MODE, payload: "Listing" });
       const userListing = await getUserListing(token);
       dispatch({ type: SET_USER_LISTING, payload: userListing });
     } else {
-      console.log(result);
       setErrors((errors = result));
     }
   };
 
   return (
-    <>
-      <button
-        onClick={() => {
-          dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
-        }}
-      >
-        Close
-      </button>
-      <h1>Add Item to My Listing</h1>
-      <form onSubmit={onSubmit}>
+    <Container className="addToListingPage">
+      <div className="closeButton">
+        <button
+          onClick={() => {
+            dispatch({ type: SET_SCREEN_MODE, payload: "Listing" });
+          }}
+        >
+          X
+        </button>
+      </div>
+      <h1>Add an Item</h1>
+      <Form onSubmit={onSubmit} type="submit">
         <ListingFields errors={errors} />
-        <AddToListingButton />
-      </form>
-    </>
+        <div className="listingButton">
+          <Button className="mt-4" type="submit" variant="primary">
+            Add to my listing
+          </Button>
+        </div>
+      </Form>
+    </Container>
   );
 };
 

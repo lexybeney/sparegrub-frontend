@@ -160,6 +160,8 @@ nav {
       margin-right: auto;
       margin-top: 45vh;
       display: block;
+      border-color: $mainGreen;
+      border-right-color: transparent;
     }
 
     .searchArea {
@@ -235,6 +237,39 @@ nav {
     }
   }
 
+  .addToListingPage {
+    h1 {
+      margin-bottom: 10px;
+    }
+    .closeButton {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        color: #a2c11c;
+        background-color: transparent;
+        border: none;
+      }
+    }
+
+    ::placeholder {
+      color: rgb(128, 128, 128, 0.4);
+      opacity: 1;
+    }
+    .form-label {
+      margin-top: 6px;
+    }
+    .form-text {
+      color: #a2c11c;
+    }
+
+    .listingButton {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+  }
+
   .profilePage {
     margin: 0 20px;
 
@@ -266,9 +301,6 @@ nav {
 
     .profileField {
       margin-bottom: 10px;
-      // margin-right: 10px;
-      // padding-bottom: 10px;
-      // padding-left: 0;
       padding: 0 0 10px 0;
       border-bottom: 1px solid $mainGreen;
     }

@@ -5,7 +5,6 @@ import { getAvailableItems } from "../../sparegrubApi";
 import Spinner from "react-bootstrap/Spinner";
 
 const AvailableItems = () => {
-  // const availableItems = useSelector((state) => state.availableItems);
   const searchTerm = useSelector((state) => state.searchTerm);
   const token = useSelector((state) => state.token);
   let [liveItems, setLiveItems] = useState([]);

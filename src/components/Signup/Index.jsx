@@ -73,14 +73,6 @@ const Signup = () => {
           </div>
         </Form>
       </div>
-      {/* Just for testing */}
-      <button
-        onClick={() => {
-          dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
-        }}
-      >
-        To Home
-      </button>
     </Container>
   );
 };
