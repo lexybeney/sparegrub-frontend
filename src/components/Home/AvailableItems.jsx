@@ -33,7 +33,7 @@ const AvailableItems = () => {
       <>
         <div className="emptyErrorMessage">
           {" "}
-          <Spinner animation="border" />.
+          <Spinner animation="border" />
         </div>
       </>
     );

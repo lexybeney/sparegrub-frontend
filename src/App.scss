@@ -74,7 +74,6 @@ nav {
 
 .required:after {
   content: "*";
-  font-weight: bold;
 }
 
 .welcomePage {
@@ -238,6 +237,11 @@ nav {
   }
 
   .addToListingPage {
+    margin-top: -15px;
+    margin-bottom: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+
     h1 {
       margin-bottom: 10px;
     }
@@ -245,10 +249,64 @@ nav {
       display: flex;
       justify-content: flex-end;
 
-      button {
-        color: #a2c11c;
-        background-color: transparent;
-        border: none;
+      @mixin cross($size: 20px, $color: currentColor, $thickness: 1px) {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: none;
+        position: relative;
+        width: $size;
+        height: $size;
+
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          top: ($size - $thickness) / 2;
+          left: 0;
+          right: 0;
+          height: $thickness;
+          background: $color;
+          border-radius: $thickness;
+        }
+
+        &:before {
+          transform: rotate(45deg);
+        }
+
+        &:after {
+          transform: rotate(-45deg);
+        }
+
+        span {
+          display: block;
+        }
+      }
+
+      .btn-close {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        background: #a2c11c;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 150ms;
+
+        .icon-cross {
+          @include cross(18px, #fff, 3px);
+        }
+
+        &:hover,
+        &:focus {
+          transform: rotateZ(90deg);
+          background: $mainGreen;
+        }
       }
     }
 
@@ -267,6 +325,20 @@ nav {
       display: flex;
       justify-content: center;
       margin-bottom: 20px;
+
+      .btn {
+        display: flex;
+        align-items: center;
+      }
+
+      .spinner-border {
+        border-color: $mainGreen;
+        border-right-color: transparent;
+        height: 1.2rem;
+        width: 1.2rem;
+        margin-left: 5px;
+        border-width: 0.16rem;
+      }
     }
   }
 

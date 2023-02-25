@@ -9,7 +9,9 @@ const ListingFields = (props) => {
   return (
     <>
       <Form.Group>
-        <Form.Label htmlFor="item_name">Item:</Form.Label>
+        <Form.Label className="required" htmlFor="item_name">
+          Item
+        </Form.Label>
         <Form.Control
           type="text"
           name="item_name"
@@ -18,13 +20,15 @@ const ListingFields = (props) => {
         <Form.Text> {errors.item_name ? errors.item_name : ""}</Form.Text>
       </Form.Group>
       <Form.Group>
-        <Form.Label htmlFor="quantity">Quantity:</Form.Label>
+        <Form.Label className="required" htmlFor="quantity">
+          Quantity
+        </Form.Label>
         <Form.Control type="text" name="quantity" placeholder="e.g. 2 kg" />
         <Form.Text> {errors.quantity ? errors.quantity : ""}</Form.Text>
       </Form.Group>
       <Form.Group>
-        <Form.Label htmlFor="collection_location">
-          Postcode for Collection:
+        <Form.Label className="required" htmlFor="collection_location">
+          Postcode for Collection
         </Form.Label>
         <Form.Control
           type="text"
@@ -36,7 +40,7 @@ const ListingFields = (props) => {
         </Form.Text>
       </Form.Group>
       <Form.Group>
-        <Form.Label htmlFor="extra_details">Extra Details:</Form.Label>
+        <Form.Label htmlFor="extra_details">Extra Details</Form.Label>
         <Form.Control
           as="textarea"
           cols="40"
@@ -47,7 +51,7 @@ const ListingFields = (props) => {
       </Form.Group>
       <Form.Group>
         <Form.Label htmlFor="collection_details">
-          Available for Collection:
+          Available for Collection
         </Form.Label>
         <Form.Control
           type="text"
