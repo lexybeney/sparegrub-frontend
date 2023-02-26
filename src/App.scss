@@ -331,6 +331,10 @@ nav {
         align-items: center;
       }
 
+      .hide {
+        display: none;
+      }
+
       .spinner-border {
         border-color: $mainGreen;
         border-right-color: transparent;

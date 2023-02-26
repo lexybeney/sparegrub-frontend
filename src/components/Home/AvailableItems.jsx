@@ -43,7 +43,7 @@ const AvailableItems = () => {
     return (
       <div className="availableItemListing">
         {items.map((item) => {
-          return <Item key={item.id} item={item} />;
+          return <Item key={item.item_id} item={item} />;
         })}
       </div>
     );

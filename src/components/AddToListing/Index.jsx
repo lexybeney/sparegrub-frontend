@@ -18,7 +18,7 @@ const AddToListing = () => {
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
   let [errors, setErrors] = useState({});
-  const [adding, setAdding] = useState(true);
+  const [adding, setAdding] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -70,7 +70,11 @@ const AddToListing = () => {
             variant={adding ? "outline-primary" : "primary"}
           >
             {adding ? "Adding" : "Add to my listing"}
-            <Spinner animation="border" variant="primary" />
+            <Spinner
+              className={adding ? "show" : "hide"}
+              animation="border"
+              variant="primary"
+            />
           </Button>
         </div>
       </Form>
