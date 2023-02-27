@@ -141,6 +141,32 @@ nav {
     margin-top: $headerHeight + $searchBarHeight + 50px;
   }
 
+  .card-body {
+    h5 {
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin-bottom: 0.5rem;
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      img {
+        height: 15px;
+      }
+    }
+
+    .btn {
+      margin-top: 10px;
+    }
+  }
+
   .loginPage {
     max-width: 500px;
 
@@ -212,31 +238,6 @@ nav {
 
     .availableItemListing {
       margin-top: $headerHeight + $searchBarHeight;
-    }
-    .card-body {
-      h5 {
-        margin-bottom: 0.5rem;
-      }
-      p {
-        margin-bottom: 0.5rem;
-      }
-
-      .location {
-        display: flex;
-        align-items: center;
-
-        p {
-          margin-bottom: 0;
-        }
-
-        img {
-          height: 15px;
-        }
-      }
-
-      .btn {
-        margin-top: 10px;
-      }
     }
   }
 

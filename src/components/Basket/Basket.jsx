@@ -9,7 +9,7 @@ const Basket = () => {
     return (
       <>
         {basket.map((item) => {
-          return <BasketItem key={item.itemId} item={item} />;
+          return <BasketItem key={item.item_id} item={item} />;
         })}
       </>
     );

@@ -56,11 +56,19 @@ const Item = (props) => {
     }
   };
 
-  if (extra_details === null) {
+  if (
+    extra_details === null ||
+    extra_details === undefined ||
+    extra_details === ""
+  ) {
     extra_details = "N/A";
   }
 
-  if (collection_details === null) {
+  if (
+    collection_details === null ||
+    collection_details === undefined ||
+    collection_details === ""
+  ) {
     collection_details = "N/A";
   }
 
