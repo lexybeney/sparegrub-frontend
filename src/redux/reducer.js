@@ -13,6 +13,7 @@ import {
   CHECKED_OUT_ITEM_COLLECTED,
   ADD_TOKEN,
   SET_USER_LISTING,
+  REPLACE_BASKET,
 } from "./types";
 import { getItem } from "../localStorage";
 import { storeItem } from "../localStorage";
@@ -27,10 +28,9 @@ export function reducer(state = getItem("store") || initialState, action) {
     }
 
     case CREATE_USER: {
-      const { user_name, phone_number, postcode, range_preference, email, id } =
+      const { user_name, phone_number, postcode, range_preference, email } =
         action.payload;
       const user = {
-        id,
         user_name,
         email,
         phone_number,
@@ -49,16 +49,34 @@ export function reducer(state = getItem("store") || initialState, action) {
 
     case ADD_TO_BASKET: {
       const item = action.payload;
-      const availableItems = [...state.availableItems];
+
+      const {
+        collection_details,
+        collection_location,
+        date_added_to_basket,
+        date_item_listed,
+        extra_details,
+        item_id,
+        item_name,
+        quantity,
+      } = item;
+
+      const newItem = {
+        collection_details,
+        collection_location,
+        date_added_to_basket,
+        date_item_listed,
+        extra_details,
+        item_id,
+        item_name,
+        quantity,
+      };
 
       const basket = state.basket ? [...state.basket] : [];
 
-      basket.push(item);
+      basket.push(newItem);
 
-      const indexOfItem = findIndexUsingId(availableItems, item.itemId);
-
-      availableItems.splice(indexOfItem, 1);
-      const newState = { ...state, basket, availableItems };
+      const newState = { ...state, basket };
 
       storeItem("store", newState);
 
@@ -66,13 +84,24 @@ export function reducer(state = getItem("store") || initialState, action) {
     }
     case REMOVE_FROM_BASKET: {
       const basket = [...state.basket];
-      const availableItems = [...state.availableItems];
 
-      const indexOfBasketItem = findIndexUsingId(basket, action.payload.itemId);
+      const indexOfBasketItem = findIndexUsingId(
+        basket,
+        action.payload.item_id
+      );
       basket.splice(indexOfBasketItem, 1);
-      availableItems.push(action.payload);
 
-      const newState = { ...state, basket, availableItems };
+      const newState = { ...state, basket };
+
+      storeItem("store", newState);
+
+      return newState;
+    }
+    case REPLACE_BASKET: {
+      console.log(action.payload);
+      const basket = action.payload;
+
+      const newState = { ...state, basket };
 
       storeItem("store", newState);
 

@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Item from "./Item";
-import { getAvailableItems } from "../../sparegrubApi";
+import { getAvailableItems, getUserData } from "../../sparegrubApi";
 import Spinner from "react-bootstrap/Spinner";
 
 const AvailableItems = () => {
@@ -9,10 +9,11 @@ const AvailableItems = () => {
   const token = useSelector((state) => state.token);
   let [liveItems, setLiveItems] = useState([]);
   const [itemsRetrieved, setItemsRetrieved] = useState(false);
-  const user_id = useSelector((state) => state.user.id);
 
   useEffect(() => {
     async function fetchData() {
+      const user = await getUserData(token);
+      const user_id = user.id;
       const response = await getAvailableItems(token, user_id);
       setLiveItems(response);
       setItemsRetrieved(true);

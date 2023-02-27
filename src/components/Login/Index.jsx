@@ -5,13 +5,14 @@ import {
   SET_SCREEN_MODE,
   CREATE_USER,
   SET_USER_LISTING,
+  REPLACE_BASKET,
 } from "../../redux/types";
 import { Button, Form, Container } from "react-bootstrap";
 import { formToObject } from "../Signup/utils";
 import { validate } from "../../validation";
 import axios from "axios";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
-import { getUserData, getUserListing } from "../../sparegrubApi";
+import { getUserData, getUserListing, getUserBasket } from "../../sparegrubApi";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ const Login = () => {
         dispatch({ type: CREATE_USER, payload: user });
         const userListing = await getUserListing(token);
         dispatch({ type: SET_USER_LISTING, payload: userListing });
+        const user_id = user.id;
+        const basket = await getUserBasket(token, user_id);
+        dispatch({ type: REPLACE_BASKET, payload: basket });
       }
     } else {
       console.log(result);

@@ -30,3 +30,10 @@ export const getUserListing = async (token) => {
     return "No items listed for this user";
   }
 };
+
+export const getUserBasket = async (token, user_id) => {
+  const result = await axios.get(`${apiUrl}/read/user_basket`, {
+    headers: { token, user_id },
+  });
+  return result.data.results;
+};
