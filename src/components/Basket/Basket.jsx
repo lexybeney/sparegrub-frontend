@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import BasketItem from "./BasketItem";
+import emptyBasket from "../../assets/images/icons/empty_basket_green.svg";
 
 const Basket = () => {
   const basket = useSelector((state) => state.basket);
@@ -15,9 +16,10 @@ const Basket = () => {
     );
   } else {
     return (
-      <>
-        <p>Your basket is empty</p>
-      </>
+      <div className="emptyBasket">
+        <img alt="Empty basket" src={emptyBasket} />
+        <h5>Your basket is empty</h5>
+      </div>
     );
   }
 };

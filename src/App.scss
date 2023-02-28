@@ -387,6 +387,29 @@ nav {
     }
   }
 
+  .basketPage {
+    .emptyBasket {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: $mainGreen;
+      position: fixed;
+      top: $headerHeight;
+      left: 0;
+      height: 100vh;
+      margin-top: -$navBarHeight;
+      width: 100vw;
+
+      img {
+        width: 10vw;
+        min-width: 60px;
+        max-width: 85px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
   .listingPage {
     margin-bottom: $navBarHeight;
   }
@@ -408,8 +431,11 @@ nav {
   z-index: 100000000000000;
 }
 
-//
+//////
+////
 //media-queries
+////
+/////
 
 @media (min-width: 470px) {
   .mainContainer {

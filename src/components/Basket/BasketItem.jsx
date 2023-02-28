@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { REMOVE_FROM_BASKET } from "../../redux/types";
+import { REMOVE_FROM_BASKET, REPLACE_BASKET } from "../../redux/types";
 import { Card, Button } from "react-bootstrap";
 import locationIcon from "../../assets/images/icons/location_blue.svg";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import axios from "axios";
+import { getUserData, getUserBasket } from "../../sparegrubApi";
 
 const BasketItem = (props) => {
   const [removing, setRemoving] = useState(false);
@@ -33,12 +34,16 @@ const BasketItem = (props) => {
     setRemoving(true);
     const result = await axios.put(
       `${apiUrl}/update/item`,
-      { status: "removed", id: item_id },
+      { status: "available", id: item_id },
       { headers: { token } }
     );
     console.log(result);
     if (result.data.status === 1) {
       dispatch({ type: REMOVE_FROM_BASKET, payload: props.item });
+      const user = await getUserData(token);
+      const user_id = user.id;
+      const basket = await getUserBasket(token, user_id);
+      dispatch({ type: REPLACE_BASKET, payload: basket });
     } else {
       setError(true);
     }
