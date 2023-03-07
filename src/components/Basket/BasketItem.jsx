@@ -6,6 +6,7 @@ import locationIcon from "../../assets/images/icons/location_blue.svg";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import axios from "axios";
 import { getUserData, getUserBasket } from "../../sparegrubApi";
+import bin from "../../assets/images/icons/bin_blue.svg";
 
 const BasketItem = (props) => {
   const [removing, setRemoving] = useState(false);
@@ -37,7 +38,7 @@ const BasketItem = (props) => {
       { status: "available", id: item_id },
       { headers: { token } }
     );
-    console.log(result);
+
     if (result.data.status === 1) {
       dispatch({ type: REMOVE_FROM_BASKET, payload: props.item });
       const user = await getUserData(token);
@@ -49,9 +50,34 @@ const BasketItem = (props) => {
     }
   };
 
+  const collect = async () => {
+    const result = await axios.put(
+      `${apiUrl}/update/item`,
+      { status: "collected", id: item_id },
+      { headers: { token } }
+    );
+  };
+
   return (
     <Card body>
-      <h5>{item_name}</h5>
+      <div className="checkoutHeader">
+        <h5>{item_name}</h5>
+        <Button
+          variant="outline-info"
+          size="sm"
+          onClick={() => {
+            remove();
+          }}
+        >
+          {error ? (
+            "Error removing from basket"
+          ) : removing ? (
+            "Removing..."
+          ) : (
+            <img alt="Move to bin" src={bin} />
+          )}
+        </Button>
+      </div>
       <p>{`Quantity: ${quantity}`}</p>
       <p>{`Extra details: ${extra_details}`}</p>
       <p>{`Collection details: ${collection_details}`}</p>
@@ -59,19 +85,14 @@ const BasketItem = (props) => {
         <img alt="Location icon" src={locationIcon} />
         <p>{collection_location}</p>
       </div>
+
       <Button
-        variant="outline-info"
         onClick={() => {
-          remove();
+          collect();
         }}
       >
-        {error
-          ? "Error removing from basket"
-          : removing
-          ? "Removing..."
-          : "Remove from basket"}
+        Collect item
       </Button>
-      <Button>Checkout item</Button>
     </Card>
   );
 };

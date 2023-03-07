@@ -408,6 +408,20 @@ nav {
         margin-bottom: 20px;
       }
     }
+
+    .checkoutHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .btn {
+        margin-top: 0;
+
+        img {
+          height: 20px;
+        }
+      }
+    }
   }
 
   .listingPage {

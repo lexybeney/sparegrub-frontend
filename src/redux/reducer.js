@@ -8,7 +8,6 @@ import {
   ADD_TO_LISTING,
   REMOVE_FROM_LISTING,
   EDIT_PROFILE,
-  ADDITIONAL_INFORMATION,
   CHECKOUT,
   CHECKED_OUT_ITEM_COLLECTED,
   ADD_TOKEN,
@@ -26,7 +25,6 @@ export function reducer(state = getItem("store") || initialState, action) {
       storeItem("store", newState);
       return newState;
     }
-
     case CREATE_USER: {
       const { user_name, phone_number, postcode, range_preference, email } =
         action.payload;
@@ -98,7 +96,6 @@ export function reducer(state = getItem("store") || initialState, action) {
       return newState;
     }
     case REPLACE_BASKET: {
-      console.log(action.payload);
       const basket = action.payload;
 
       const newState = { ...state, basket };
@@ -112,7 +109,6 @@ export function reducer(state = getItem("store") || initialState, action) {
       storeItem("store", newState);
       return newState;
     }
-
     case SET_USER_LISTING: {
       const userListing = {
         dateDataRetrieved: Date.now(),
@@ -125,7 +121,6 @@ export function reducer(state = getItem("store") || initialState, action) {
 
       return newState;
     }
-
     case ADD_TO_LISTING: {
       const userListing = state.userListing;
 
@@ -182,14 +177,6 @@ export function reducer(state = getItem("store") || initialState, action) {
       storeItem("store", newState);
 
       return newState;
-    }
-
-    case ADDITIONAL_INFORMATION: {
-      const availableItems = { ...state.availableItems };
-
-      const indexOfAvailableItem = findIndexUsingId(availableItems, action.id);
-
-      return { ...state, additionalInformation: indexOfAvailableItem };
     }
     case CHECKOUT: {
       const basket = { ...state.basket };
