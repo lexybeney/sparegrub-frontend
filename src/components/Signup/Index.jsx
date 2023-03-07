@@ -56,7 +56,7 @@ const Signup = () => {
   };
 
   return (
-    <Container>
+    <Container className="signupPage">
       <h1>Signup</h1>
       <p>
         Our mission is to reduce food wastage by sharing what we have with
@@ -71,6 +71,9 @@ const Signup = () => {
               Submit
             </Button>
           </div>
+          <p>
+            <em>*Required field</em>
+          </p>
         </Form>
       </div>
     </Container>
