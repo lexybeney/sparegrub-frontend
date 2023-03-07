@@ -13,6 +13,7 @@ import {
   ADD_TOKEN,
   SET_USER_LISTING,
   REPLACE_BASKET,
+  LOGOUT,
 } from "./types";
 import { getItem } from "../localStorage";
 import { storeItem } from "../localStorage";
@@ -175,6 +176,13 @@ export function reducer(state = getItem("store") || initialState, action) {
       const newState = { ...state, user };
 
       storeItem("store", newState);
+
+      return newState;
+    }
+    case LOGOUT: {
+      const token = action.payload;
+
+      const newState = { ...state, token };
 
       return newState;
     }

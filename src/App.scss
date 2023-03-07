@@ -385,6 +385,13 @@ nav {
       padding: 0 0 10px 0;
       border-bottom: 1px solid $mainGreen;
     }
+
+    .logout {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .basketPage {

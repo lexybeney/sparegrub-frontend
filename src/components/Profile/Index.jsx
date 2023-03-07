@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { EDIT_PROFILE } from "../../redux/types";
+import { EDIT_PROFILE, LOGOUT, SET_SCREEN_MODE } from "../../redux/types";
 import Navigation from "../Navigation/Index";
 import ProfileFields from "./ProfileFields";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import { validate } from "../../validation";
 import axios from "axios";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import { getUserData } from "../../sparegrubApi";
-import Form from "react-bootstrap/Form";
+import { Button, Form } from "react-bootstrap";
 
 const Profile = () => {
   const [editing, setEditing] = useState(false);
@@ -59,6 +59,11 @@ const Profile = () => {
     }
   };
 
+  const logout = () => {
+    dispatch({ type: LOGOUT, payload: "" });
+    dispatch({ type: SET_SCREEN_MODE, payload: "Login" });
+  };
+
   return (
     <div className="profilePage">
       <h1>My Profile</h1>
@@ -68,6 +73,9 @@ const Profile = () => {
         </button>
         <ProfileFields editing={editing} errors={errors} />
       </Form>
+      <div className="logout">
+        <Button onClick={logout}>Logout</Button>
+      </div>
       <Navigation />
     </div>
   );
