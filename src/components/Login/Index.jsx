@@ -18,6 +18,7 @@ const Login = () => {
   const dispatch = useDispatch();
   let [errors, setErrors] = useState({});
   let [loginError, setloginError] = useState();
+  const [loggingIn, setLoggingIn] = useState(false);
 
   const signup = () => {
     dispatch({ type: SET_SCREEN_MODE, payload: "Signup" });
@@ -38,6 +39,7 @@ const Login = () => {
       if (results.data.status === 0) {
         setloginError((loginError = results.data.error));
       } else {
+        setLoggingIn(true);
         const token = results.data.token;
         setloginError((loginError = ""));
         dispatch({ type: ADD_TOKEN, payload: token });
@@ -85,8 +87,13 @@ const Login = () => {
           </Form.Group>
           <p className="text-danger">{loginError ? loginError : " "}</p>
           <div className="submitButton">
-            <Button size="lg" className="mt-4" type="submit" variant="primary">
-              Login
+            <Button
+              size="lg"
+              className="mt-4"
+              type="submit"
+              variant={loggingIn ? "outline-primary" : "primary"}
+            >
+              {loggingIn ? "Logging in..." : "Login"}
             </Button>
           </div>
         </Form>
