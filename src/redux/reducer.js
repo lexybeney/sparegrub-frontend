@@ -9,7 +9,6 @@ import {
   REMOVE_FROM_LISTING,
   EDIT_PROFILE,
   CHECKOUT,
-  CHECKED_OUT_ITEM_COLLECTED,
   ADD_TOKEN,
   SET_USER_LISTING,
   REPLACE_BASKET,
@@ -198,19 +197,6 @@ export function reducer(state = getItem("store") || initialState, action) {
       });
 
       const newState = { ...state, checkedOutItems, basket: [] };
-
-      storeItem("store", newState);
-
-      return newState;
-    }
-    case CHECKED_OUT_ITEM_COLLECTED: {
-      const checkedOutItems = { ...state.checkedOutItems };
-
-      const indexOfItem = findIndexUsingId(checkedOutItems, action.payload);
-
-      checkedOutItems.splice(indexOfItem, 1);
-
-      const newState = { ...state, checkedOutItems };
 
       storeItem("store", newState);
 

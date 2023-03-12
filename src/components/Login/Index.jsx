@@ -30,6 +30,7 @@ const Login = () => {
     const result = validate("Login", formObj);
 
     if (result === true) {
+      setLoggingIn(true);
       setErrors((errors = {}));
       const results = await axios.post(`${apiUrl}/login`, {
         user_name: formObj.username,
@@ -39,7 +40,7 @@ const Login = () => {
       if (results.data.status === 0) {
         setloginError((loginError = results.data.error));
       } else {
-        setLoggingIn(true);
+        console.log("success");
         const token = results.data.token;
         setloginError((loginError = ""));
         dispatch({ type: ADD_TOKEN, payload: token });
@@ -104,14 +105,6 @@ const Login = () => {
             here
           </Button>
         </div>
-        {/* Just for testing */}
-        <button
-          onClick={() => {
-            dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
-          }}
-        >
-          To Home
-        </button>
       </Container>
     </>
   );

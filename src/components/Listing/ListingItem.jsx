@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Accordion } from "react-bootstrap";
 import axios from "axios";
@@ -8,6 +8,7 @@ import { REMOVE_FROM_LISTING } from "../../redux/types";
 const ListingItem = (props) => {
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
+  const [removing, setRemoving] = useState(false);
 
   let {
     item_name,
@@ -20,6 +21,7 @@ const ListingItem = (props) => {
   } = props.item;
 
   const remove = async () => {
+    setRemoving(true);
     await axios.put(
       `${apiUrl}/update/item`,
       {
@@ -54,7 +56,7 @@ const ListingItem = (props) => {
           <p>Collect from: {collection_location}</p>
           <p>Added on: {new Date(date_added).toDateString()}</p>
           <Button variant="outline-info" onClick={remove}>
-            Remove
+            {removing ? "Removing" : "Remove"}
           </Button>
         </Accordion.Body>
       </Accordion.Item>

@@ -9,6 +9,7 @@ import AddToListing from "./AddToListing/Index";
 import Login from "./Login/Index";
 import logo from "../assets/images/logos/logo_dark_bg.svg";
 import { Button } from "react-bootstrap";
+import CollectionConfirmationWindow from "./CollectionConfirmationWindow/CollectionConfirmationWindow";
 
 const Interface = () => {
   const screenMode = useSelector((state) => state.screenMode);
@@ -27,10 +28,11 @@ const Interface = () => {
         {screenMode === "Home" && <Home />}
         {screenMode === "Basket" && <Basket />}
         {screenMode === "Profile" && <Profile />}
-        {/* {screenMode === "Notifications" && <Notifications />} */}
         {screenMode === "Listing" && <Listing />}
         {screenMode === "AddToListing" && <AddToListing />}
-        {/* {screenMode === "Post Checkout" && <PostCheckout />} */}
+        {screenMode === "Collection Confirmation Window" && (
+          <CollectionConfirmationWindow />
+        )}
       </div>
     </>
   );

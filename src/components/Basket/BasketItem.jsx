@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { REMOVE_FROM_BASKET, REPLACE_BASKET } from "../../redux/types";
+import {
+  REMOVE_FROM_BASKET,
+  REPLACE_BASKET,
+  SET_SCREEN_MODE,
+} from "../../redux/types";
 import { Card, Button } from "react-bootstrap";
 import locationIcon from "../../assets/images/icons/location_blue.svg";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
@@ -56,6 +60,20 @@ const BasketItem = (props) => {
       { status: "collected", id: item_id },
       { headers: { token } }
     );
+
+    if (result.data.status === 1) {
+      const user = await getUserData(token);
+      const user_id = user.id;
+      const basket = await getUserBasket(token, user_id);
+      dispatch({
+        type: SET_SCREEN_MODE,
+        payload: "Collection Confirmation Window",
+      });
+      dispatch({ type: REPLACE_BASKET, payload: basket });
+    } else {
+      console.log(result);
+      setError(true);
+    }
   };
 
   return (
@@ -70,7 +88,7 @@ const BasketItem = (props) => {
           }}
         >
           {error ? (
-            "Error removing from basket"
+            "An error occured"
           ) : removing ? (
             "Removing..."
           ) : (
