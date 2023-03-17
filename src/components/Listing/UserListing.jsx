@@ -18,6 +18,7 @@ const UserListing = () => {
   } else {
     return (
       <>
+        <h6>Items still available:</h6>
         <Accordion>
           {userListing.map((item) => {
             return <ListingItem key={item.item_id} item={item} />;

@@ -11,3 +11,4 @@ export const ADD_TOKEN = "ADD_TOKEN";
 export const SET_USER_LISTING = "SET_USER_LISTING";
 export const REPLACE_BASKET = "REPLACE_BASKET";
 export const LOGOUT = "LOGOUT";
+export const SET_LISTING_COLLECTION = "SET_LISTING_COLLECTION";

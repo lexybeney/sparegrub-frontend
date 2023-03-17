@@ -8,7 +8,7 @@ const CollectedItem = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch({ type: SET_SCREEN_MODE, payload: "Basket" });
-    }, 3500);
+    }, 3700);
   }, []);
 
   return (

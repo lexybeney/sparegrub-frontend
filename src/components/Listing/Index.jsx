@@ -5,6 +5,7 @@ import { Button, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { SET_SCREEN_MODE } from "../../redux/types";
 import addButton from "../../assets/images/icons/plus_sign_white.svg";
+import CollectedItems from "./CollectedItems";
 
 const Listing = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Listing = () => {
       <Container className="listingPage">
         <h1>My Listing</h1>
         <UserListing />
+        <CollectedItems />
       </Container>
       <div className="addToListing">
         <Button className="btn-listing" onClick={addItem}>

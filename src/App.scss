@@ -267,6 +267,10 @@ nav {
       display: none;
     }
 
+    .editProfileText {
+      font-weight: 300;
+    }
+
     .searchArea {
       width: 100%;
       background-color: #ffffff;
@@ -443,6 +447,15 @@ nav {
 
   .listingPage {
     margin-bottom: $navBarHeight;
+
+    h6 {
+      margin-bottom: 15px;
+      color: $mainGreen;
+    }
+
+    .collectedItems {
+      margin-top: 25px;
+    }
   }
 
   .addToListing {

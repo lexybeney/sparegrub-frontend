@@ -53,7 +53,7 @@ const AvailableItems = () => {
       <div className="emptyErrorMessage">
         <h4>There are no items available within your range!</h4>
         <br></br>
-        <h4>
+        <h4 className="editProfileText">
           Try editing your range preference under your profile to see more
           items.
         </h4>

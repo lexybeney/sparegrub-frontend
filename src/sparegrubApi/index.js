@@ -25,7 +25,7 @@ export const getUserListing = async (token) => {
     headers: { token },
   });
   if (result.data.status === 1) {
-    return result.data.results;
+    return result.data;
   } else {
     return "No items listed for this user";
   }

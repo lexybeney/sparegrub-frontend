@@ -7,6 +7,7 @@ import {
   ADD_TO_LISTING,
   SET_SCREEN_MODE,
   SET_USER_LISTING,
+  SET_LISTING_COLLECTION,
 } from "../../redux/types";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import axios from "axios";
@@ -50,7 +51,14 @@ const AddToListing = () => {
       dispatch({ type: ADD_TO_LISTING, payload: formObj });
       dispatch({ type: SET_SCREEN_MODE, payload: "Listing" });
       const userListing = await getUserListing(token);
-      dispatch({ type: SET_USER_LISTING, payload: userListing });
+      dispatch({
+        type: SET_USER_LISTING,
+        payload: userListing.availableItems,
+      });
+      dispatch({
+        type: SET_LISTING_COLLECTION,
+        payload: userListing.itemsToBeCollected,
+      });
     } else {
       setErrors((errors = result));
       setAdding(false);

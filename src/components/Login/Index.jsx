@@ -6,6 +6,7 @@ import {
   CREATE_USER,
   SET_USER_LISTING,
   REPLACE_BASKET,
+  SET_LISTING_COLLECTION,
 } from "../../redux/types";
 import { Button, Form, Container } from "react-bootstrap";
 import { formToObject } from "../Signup/utils";
@@ -40,7 +41,6 @@ const Login = () => {
       if (results.data.status === 0) {
         setloginError((loginError = results.data.error));
       } else {
-        console.log("success");
         const token = results.data.token;
         setloginError((loginError = ""));
         dispatch({ type: ADD_TOKEN, payload: token });
@@ -48,7 +48,15 @@ const Login = () => {
         const user = await getUserData(token);
         dispatch({ type: CREATE_USER, payload: user });
         const userListing = await getUserListing(token);
-        dispatch({ type: SET_USER_LISTING, payload: userListing });
+        dispatch({
+          type: SET_USER_LISTING,
+          payload: userListing.availableItems,
+        });
+        dispatch({
+          type: SET_LISTING_COLLECTION,
+          payload: userListing.itemsToBeCollected,
+        });
+
         const user_id = user.id;
         const basket = await getUserBasket(token, user_id);
         dispatch({ type: REPLACE_BASKET, payload: basket });

@@ -13,6 +13,7 @@ import {
   SET_USER_LISTING,
   REPLACE_BASKET,
   LOGOUT,
+  SET_LISTING_COLLECTION,
 } from "./types";
 import { getItem } from "../localStorage";
 import { storeItem } from "../localStorage";
@@ -116,6 +117,15 @@ export function reducer(state = getItem("store") || initialState, action) {
       };
 
       const newState = { ...state, userListing };
+
+      storeItem("store", newState);
+
+      return newState;
+    }
+    case SET_LISTING_COLLECTION: {
+      const itemsToBeCollected = action.payload;
+
+      const newState = { ...state, itemsToBeCollected };
 
       storeItem("store", newState);
 
