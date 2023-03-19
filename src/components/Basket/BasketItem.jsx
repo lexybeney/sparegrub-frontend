@@ -16,6 +16,7 @@ const BasketItem = (props) => {
   const [removing, setRemoving] = useState(false);
   const [error, setError] = useState(false);
   const token = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user);
 
   let {
     item_name,
@@ -39,7 +40,10 @@ const BasketItem = (props) => {
     setRemoving(true);
     const result = await axios.put(
       `${apiUrl}/update/item`,
-      { status: "available", id: item_id },
+      {
+        status: "available",
+        id: item_id,
+      },
       { headers: { token } }
     );
 
@@ -57,8 +61,14 @@ const BasketItem = (props) => {
   const collect = async () => {
     const result = await axios.put(
       `${apiUrl}/update/item`,
-      { status: "collected", id: item_id },
-      { headers: { token } }
+      {
+        status: "collected",
+        id: item_id,
+        item_name,
+        quantity,
+        collection_details,
+      },
+      { headers: { token, username: user.user_name, email: user.email } }
     );
 
     if (result.data.status === 1) {

@@ -4,6 +4,7 @@ import Item from "./Item";
 import { getAvailableItems, getUserData } from "../../sparegrubApi";
 import Spinner from "react-bootstrap/Spinner";
 import { calcDistance } from "../../utils/index";
+import { findLatAndLon } from "../../utils";
 
 const AvailableItems = () => {
   const searchTerm = useSelector((state) => state.searchTerm);
@@ -43,7 +44,13 @@ const AvailableItems = () => {
   }
   const range_preference = user.range_preference.split(" ")[0];
   const itemsInRange = [];
-  items.map((item) => {
+  items.map(async (item) => {
+    if (item.latitude === null || item.longitude === null) {
+      const location = await findLatAndLon(item.collection_location);
+      item.latitude = location.latitude;
+      item.longitude = location.longitude;
+    }
+
     const dist = calcDistance(
       user.latitude,
       user.longitude,
