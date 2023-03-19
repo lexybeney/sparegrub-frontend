@@ -9,6 +9,7 @@ import axios from "axios";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import { getUserData } from "../../sparegrubApi";
 import { Button, Form } from "react-bootstrap";
+import { findLatAndLon } from "../../utils";
 
 const Profile = () => {
   const [editing, setEditing] = useState(false);
@@ -31,6 +32,10 @@ const Profile = () => {
           user_name,
         } = formObj;
 
+        const location = await findLatAndLon(postcode);
+        const latitude = location.latitude;
+        const longitude = location.longitude;
+
         await axios.put(
           `${apiUrl}/update/user`,
           {
@@ -40,6 +45,8 @@ const Profile = () => {
             postcode,
             range_preference,
             user_name,
+            latitude,
+            longitude,
           },
           {
             headers: {

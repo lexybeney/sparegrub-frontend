@@ -3,10 +3,12 @@ import { useSelector } from "react-redux";
 import Item from "./Item";
 import { getAvailableItems, getUserData } from "../../sparegrubApi";
 import Spinner from "react-bootstrap/Spinner";
+import { calcDistance } from "../../utils/index";
 
 const AvailableItems = () => {
   const searchTerm = useSelector((state) => state.searchTerm);
   const token = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user);
   let [liveItems, setLiveItems] = useState([]);
   const [itemsRetrieved, setItemsRetrieved] = useState(false);
 
@@ -39,16 +41,24 @@ const AvailableItems = () => {
       </>
     );
   }
-
-  if (items.length > 0) {
-    return (
-      <div className="availableItemListing">
-        {items.map((item) => {
-          return <Item key={item.item_id} item={item} />;
-        })}
-      </div>
+  const range_preference = user.range_preference.split(" ")[0];
+  const itemsInRange = [];
+  items.map((item) => {
+    const dist = calcDistance(
+      user.latitude,
+      user.longitude,
+      item.latitude,
+      item.longitude,
+      "M"
     );
-  } else {
+
+    if (dist <= range_preference) {
+      item.distance = dist;
+      itemsInRange.push(item);
+    }
+  });
+
+  if (items.length < 1 || itemsInRange < 1) {
     return (
       <div className="emptyErrorMessage">
         <h4>There are no items available within your range!</h4>
@@ -57,6 +67,14 @@ const AvailableItems = () => {
           Try editing your range preference under your profile to see more
           items.
         </h4>
+      </div>
+    );
+  } else {
+    return (
+      <div className="availableItemListing">
+        {itemsInRange.map((item) => {
+          return <Item key={item.item_id} item={item} />;
+        })}
       </div>
     );
   }

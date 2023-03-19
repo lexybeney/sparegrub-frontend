@@ -8,7 +8,6 @@ import {
   ADD_TO_LISTING,
   REMOVE_FROM_LISTING,
   EDIT_PROFILE,
-  CHECKOUT,
   ADD_TOKEN,
   SET_USER_LISTING,
   REPLACE_BASKET,
@@ -27,13 +26,22 @@ export function reducer(state = getItem("store") || initialState, action) {
       return newState;
     }
     case CREATE_USER: {
-      const { user_name, phone_number, postcode, range_preference, email } =
-        action.payload;
+      const {
+        user_name,
+        phone_number,
+        postcode,
+        range_preference,
+        email,
+        latitude,
+        longitude,
+      } = action.payload;
       const user = {
         user_name,
         email,
         phone_number,
         postcode,
+        latitude,
+        longitude,
         range_preference,
       };
 
@@ -195,24 +203,6 @@ export function reducer(state = getItem("store") || initialState, action) {
 
       return newState;
     }
-    case CHECKOUT: {
-      const basket = { ...state.basket };
-      const availableItems = { ...state.availableItems };
-      const checkedOutItems = { ...state.checkedOutItems };
-
-      basket.forEach((item) => {
-        checkedOutItems.push(item);
-        const indexOfItem = findIndexUsingId(basket, item.id);
-        availableItems.splice(indexOfItem, 1);
-      });
-
-      const newState = { ...state, checkedOutItems, basket: [] };
-
-      storeItem("store", newState);
-
-      return newState;
-    }
-
     default:
       return state;
   }

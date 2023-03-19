@@ -3,4 +3,8 @@ export const initialState = {
     id: "",
     user_name: "",
   },
+  userListing: {
+    items: [],
+  },
+  itemsToBeCollected: [],
 };

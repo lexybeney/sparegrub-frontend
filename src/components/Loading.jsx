@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <div className="welcomePage">
       <img src={logo} alt="SpareGrub Logo" />
-      <h1>Welcome!</h1>
+      <h1>Welcome</h1>
     </div>
   );
 };

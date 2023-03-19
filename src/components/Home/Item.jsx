@@ -16,12 +16,14 @@ const Item = (props) => {
   let {
     item_name,
     quantity,
-    collection_location,
     extra_details,
     collection_details,
     item_id,
+    distance,
   } = props.item;
   const dispatch = useDispatch();
+
+  const dist = Math.round(distance * 10) / 10;
 
   const add = async () => {
     const user = await getUserData(token);
@@ -80,7 +82,7 @@ const Item = (props) => {
       <p>{`Collection details: ${collection_details}`}</p>
       <div className="location">
         <img alt="Location icon" src={locationIcon} />
-        <p>{collection_location}</p>
+        <p>{`${dist} miles`}</p>
       </div>
 
       <Button

@@ -14,6 +14,7 @@ import axios from "axios";
 import { getUserListing } from "../../sparegrubApi";
 import { Container, Form, Button, Spinner } from "react-bootstrap";
 import CloseButton from "./CloseButton";
+import { findLatAndLon } from "../../utils";
 
 const AddToListing = () => {
   const token = useSelector((state) => state.token);
@@ -36,6 +37,10 @@ const AddToListing = () => {
 
     if (result === true) {
       setAdding(true);
+      const location = await findLatAndLon(collection_location);
+      const latitude = location.latitude;
+      const longitude = location.longitude;
+
       await axios.post(
         `${apiUrl}/create/item`,
         {
@@ -44,6 +49,8 @@ const AddToListing = () => {
           collection_location,
           collection_details,
           extra_details,
+          latitude,
+          longitude,
         },
         { headers: { token } }
       );

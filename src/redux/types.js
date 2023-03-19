@@ -6,7 +6,6 @@ export const SET_SCREEN_MODE = "SCREEN_MODE";
 export const ADD_TO_LISTING = "ADD_TO_LISTING";
 export const REMOVE_FROM_LISTING = "REMOVE_FROM_LISTING";
 export const EDIT_PROFILE = "EDIT_PROFILE";
-export const CHECKOUT = "CHECKOUT";
 export const ADD_TOKEN = "ADD_TOKEN";
 export const SET_USER_LISTING = "SET_USER_LISTING";
 export const REPLACE_BASKET = "REPLACE_BASKET";

@@ -9,6 +9,7 @@ import { Container, Form, Button } from "react-bootstrap";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import axios from "axios";
 import { getUserData } from "../../sparegrubApi";
+import { findLatAndLon } from "../../utils";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,10 @@ const Signup = () => {
         username: user_name,
       } = formObj;
 
+      const location = await findLatAndLon(postcode);
+      const latitude = location.latitude;
+      const longitude = location.longitude;
+
       const results = await axios.post(`${apiUrl}/create/user`, {
         email,
         password,
@@ -37,6 +42,8 @@ const Signup = () => {
         postcode,
         range_preference,
         user_name,
+        latitude,
+        longitude,
       });
 
       if (results.data.status === 0) {
@@ -44,7 +51,6 @@ const Signup = () => {
       } else {
         const token = results.data.token;
         const user = await getUserData(token);
-        console.log(user);
         dispatch({ type: CREATE_USER, payload: user });
         dispatch({ type: ADD_TOKEN, payload: token });
         dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
