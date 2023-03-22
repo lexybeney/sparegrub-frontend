@@ -11,13 +11,13 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const userToken = useSelector((state) => state.token);
 
-  useEffect(() => {
-    setTimeout(() => {
-      const payload = userToken ? "Home" : "Login";
-      dispatch({ type: SET_SCREEN_MODE, payload });
-      setLoading(false);
-    }, 1500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     const payload = userToken ? "Home" : "Login";
+  //     dispatch({ type: SET_SCREEN_MODE, payload });
+  //     setLoading(false);
+  //   }, 1500);
+  // }, []);
 
   return <>{loading ? <Loading /> : <Interface />}</>;
 };

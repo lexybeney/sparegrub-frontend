@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.2",
+    "gsap": "^3.11.5",
     "joi": "^17.6.2",
     "joi-postalcode": "^2.0.0",
     "postal-codes-js": "^2.5.2",

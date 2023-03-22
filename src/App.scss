@@ -84,17 +84,21 @@ nav {
   background-color: $mainBlue;
   align-content: center;
 
-  img {
-    height: 50vh;
+  .animate {
+    opacity: 0;
   }
 
-  h1 {
-    color: $light;
-    font-size: 10vh;
-  }
-  p {
-    color: $dark;
-  }
+  // img {
+  //   height: 50vh;
+  // }
+
+  // h1 {
+  //   color: $light;
+  //   font-size: 10vh;
+  // }
+  // p {
+  //   color: $dark;
+  // }
 }
 
 .mainContainer {
