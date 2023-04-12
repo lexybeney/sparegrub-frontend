@@ -18,8 +18,10 @@ const Listing = () => {
     <>
       <Container className="listingPage">
         <h1>My Listing</h1>
-        <UserListing />
-        <CollectedItems />
+        <div className="wideListing">
+          <UserListing />
+          <CollectedItems />
+        </div>
       </Container>
       <div className="addToListing">
         <Button className="btn-listing" onClick={addItem}>

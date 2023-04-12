@@ -7,8 +7,7 @@ import Profile from "./Profile/Index";
 import Listing from "./Listing/Index";
 import AddToListing from "./AddToListing/Index";
 import Login from "./Login/Index";
-import logo from "../assets/images/logos/logo_dark_bg.svg";
-import { Button } from "react-bootstrap";
+import Header from "./Header";
 import CollectionConfirmationWindow from "./CollectionConfirmationWindow/CollectionConfirmationWindow";
 import {
   EDIT_PROFILE,
@@ -63,12 +62,7 @@ const Interface = () => {
 
   return (
     <>
-      <div className="header">
-        <img src={logo} alt="SpareGrub Logo" />
-        <Button className="clearStorage" onClick={() => localStorage.clear()}>
-          Clear Local Storage
-        </Button>
-      </div>
+      <Header />
       <div className="mainContainer">
         {screenMode === "Login" && <Login />}
         {screenMode === "Signup" && <Signup />}

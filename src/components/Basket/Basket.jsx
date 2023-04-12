@@ -12,6 +12,9 @@ const Basket = () => {
         {basket.map((item) => {
           return <BasketItem key={item.item_id} item={item} />;
         })}
+        <p className="basketTimeLimit">
+          <em>Items will only be held in your basket for 1 hour</em>
+        </p>
       </>
     );
   } else {

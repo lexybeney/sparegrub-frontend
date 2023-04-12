@@ -37,6 +37,8 @@ body {
   height: $headerHeight;
   background-color: $mainBlue;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   position: fixed;
   top: 0;
@@ -47,6 +49,10 @@ body {
     height: 150px;
     align-self: center;
     margin-left: 20px;
+  }
+
+  .hideNav {
+    display: none;
   }
 }
 
@@ -87,18 +93,6 @@ nav {
   .animate {
     opacity: 0;
   }
-
-  // img {
-  //   height: 50vh;
-  // }
-
-  // h1 {
-  //   color: $light;
-  //   font-size: 10vh;
-  // }
-  // p {
-  //   color: $dark;
-  // }
 }
 
 .mainContainer {
@@ -237,6 +231,7 @@ nav {
   }
 
   .signupPage {
+    max-width: 650px;
     .form-label {
       margin-top: 7px;
     }
@@ -325,9 +320,10 @@ nav {
 
   .addToListingPage {
     margin-top: -15px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     padding-right: 15px;
     padding-left: 15px;
+    max-width: 650px;
 
     h1 {
       margin-bottom: 10px;
@@ -413,6 +409,9 @@ nav {
   }
 
   .basketPage {
+    .basketTimeLimit {
+      margin-top: 1rem;
+    }
     .emptyBasket {
       display: flex;
       flex-direction: column;
@@ -451,14 +450,14 @@ nav {
 
   .listingPage {
     margin-bottom: $navBarHeight;
+    max-width: 1000px;
 
     h6 {
       margin-bottom: 15px;
       color: $mainGreen;
     }
-
-    .collectedItems {
-      margin-top: 25px;
+    .listingItemsAvailable {
+      margin-bottom: 25px;
     }
   }
 
@@ -548,10 +547,6 @@ nav {
   }
 }
 
-.clearStorage {
-  z-index: 100000000000000;
-}
-
 //////
 ////
 //media-queries
@@ -564,5 +559,101 @@ nav {
       margin: 0 auto;
       max-width: 430px;
     }
+  }
+}
+
+@media (max-width: 700px) {
+  .largeScreenNav {
+    display: none;
+  }
+}
+
+@media (min-width: 700px) {
+  nav {
+    display: none;
+  }
+
+  h6 {
+    font-size: 1.3rem;
+  }
+
+  .largeScreenNav {
+    display: initial;
+    button {
+      margin-right: 1.5rem;
+      color: #ffffff;
+      background-color: transparent;
+      border: none;
+      font-size: 1.1rem;
+
+      // .inactivePage {
+      //   color: $light;
+      // }
+    }
+    .activePage {
+      color: $mainGreen;
+    }
+  }
+
+  .mainContainer {
+    .btn-listing {
+      height: 40px;
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 30px;
+        margin-right: 8px;
+      }
+
+      p {
+        align-self: center;
+        font-size: 1.3rem;
+        margin-bottom: 0;
+      }
+    }
+
+    .addToListingPage {
+      margin-top: 10px;
+
+      .listingFields {
+        font-size: 1.2rem;
+      }
+
+      .listingButton {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+
+        .btn {
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    .listingPage {
+      .wideListing {
+        display: flex;
+
+        h6 {
+          text-align: center;
+        }
+      }
+
+      .wideListing > * {
+        flex: 1 1 0;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+    .addToListing {
+      bottom: 20px;
+    }
+  }
+}
+
+@media (min-width: 1100px) {
+  .largeScreenNav {
+    margin-right: 3rem;
   }
 }

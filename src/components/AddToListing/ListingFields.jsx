@@ -7,7 +7,7 @@ const ListingFields = (props) => {
   const errors = props.errors;
 
   return (
-    <>
+    <div className="listingFields">
       <Form.Group>
         <Form.Label className="required" htmlFor="item_name">
           Item
@@ -59,7 +59,7 @@ const ListingFields = (props) => {
           placeholder="e.g Mon-Fri after 6pm"
         />
       </Form.Group>
-    </>
+    </div>
   );
 };
 
