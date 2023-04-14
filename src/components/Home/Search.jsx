@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { SEARCH_TERM } from "../../redux/types";
-import searchIcon from "../../assets/images/icons/search_filled_green.svg";
+import searchIcon from "../../assets/images/icons/search_green.svg";
 
 const Search = () => {
   const dispatch = useDispatch();

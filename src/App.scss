@@ -4,7 +4,7 @@ $mainGreen: #a2c11c;
 $mainBlue: #2c5d63;
 $navBarHeight: 85px;
 $headerHeight: 70px;
-$searchBarHeight: 90px;
+$searchBarHeight: 75px;
 
 //import bootstrap
 @import "~bootstrap/scss/bootstrap";
@@ -283,14 +283,14 @@ nav {
 
       .searchBar {
         display: flex;
-        justify-content: center;
-        background-color: rgb(162, 193, 28, 0.2);
-        border-radius: 10px;
+        justify-content: space-between;
+        background-color: #ffffff;
+        border-radius: 20px;
         padding: 3px 0;
-        width: 200px;
+        width: 250px;
         margin: 0 auto;
         border-color: $mainGreen;
-        border-width: 3px;
+        border-width: 2.5px;
         border-style: solid;
         align-items: center;
 
@@ -298,6 +298,7 @@ nav {
           border: none;
           background-color: transparent;
           width: 150px;
+          padding-left: 10px;
           &::placeholder {
             color: rgb(44, 93, 99, 0.5);
           }
@@ -308,7 +309,8 @@ nav {
         }
 
         img {
-          height: 30px;
+          height: 23px;
+          margin-right: 10px;
         }
       }
     }
