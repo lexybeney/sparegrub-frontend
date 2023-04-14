@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <>
       <div className="header">
-        <img src={logo} alt="SpareGrub Logo" />
+        <img onClick={() => onClick("Home")} src={logo} alt="SpareGrub Logo" />
         <div
           className={
             screenMode === "Login" || screenMode === "Signup"

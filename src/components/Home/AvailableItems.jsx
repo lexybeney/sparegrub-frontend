@@ -5,6 +5,7 @@ import { getAvailableItems, getUserData } from "../../sparegrubApi";
 import Spinner from "react-bootstrap/Spinner";
 import { calcDistance } from "../../utils/index";
 import { findLatAndLon } from "../../utils";
+import { Row, Col } from "react-bootstrap";
 
 const AvailableItems = () => {
   const searchTerm = useSelector((state) => state.searchTerm);
@@ -79,9 +80,15 @@ const AvailableItems = () => {
   } else {
     return (
       <div className="availableItemListing">
-        {itemsInRange.map((item) => {
-          return <Item key={item.item_id} item={item} />;
-        })}
+        <Row>
+          {itemsInRange.map((item) => {
+            return (
+              <Col xs={12} md={6} xl={4}>
+                <Item key={item.item_id} item={item} />{" "}
+              </Col>
+            );
+          })}
+        </Row>
       </div>
     );
   }

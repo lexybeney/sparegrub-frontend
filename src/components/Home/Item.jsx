@@ -20,11 +20,13 @@ const Item = (props) => {
     collection_details,
     item_id,
     distance,
+    date_added_to_basket,
   } = props.item;
   const dispatch = useDispatch();
 
   const dist = Math.round(distance * 10) / 10;
 
+  console.log(props.item);
   const add = async () => {
     const user = await getUserData(token);
     const user_id = user.id;
@@ -80,6 +82,7 @@ const Item = (props) => {
       <p>{`Quantity: ${quantity}`}</p>
       <p>{`Extra details: ${extra_details}`}</p>
       <p>{`Collection details: ${collection_details}`}</p>
+      <p>{`Added on: ${new Date(date_added_to_basket).toDateString()}`}</p>
       <div className="location">
         <img alt="Location icon" src={locationIcon} />
         <p>{`${dist} miles`}</p>
