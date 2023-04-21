@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ADD_TOKEN, CREATE_USER, SET_SCREEN_MODE } from "../../redux/types";
+import {
+  ADD_TOKEN,
+  CREATE_USER,
+  REPLACE_BASKET,
+  SET_LISTING_COLLECTION,
+  SET_SCREEN_MODE,
+  SET_USER_LISTING,
+} from "../../redux/types";
 import { validate } from "../../validation";
 import { formToObject } from "./utils";
 import Range from "./Range";
@@ -54,6 +61,9 @@ const Signup = () => {
         dispatch({ type: CREATE_USER, payload: user });
         dispatch({ type: ADD_TOKEN, payload: token });
         dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
+        dispatch({ type: REPLACE_BASKET, payload: [] });
+        dispatch({ type: SET_USER_LISTING, payload: [] });
+        dispatch({ type: SET_LISTING_COLLECTION, payload: [] });
       }
     } else {
       console.log(result);

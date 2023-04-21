@@ -463,6 +463,16 @@ nav {
     }
     .listingItemsAvailable {
       margin-bottom: 25px;
+
+      p {
+        text-align: center;
+      }
+    }
+
+    .collectedItems {
+      p {
+        text-align: center;
+      }
     }
   }
 

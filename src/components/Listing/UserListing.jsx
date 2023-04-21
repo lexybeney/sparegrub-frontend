@@ -12,8 +12,10 @@ const UserListing = () => {
   ) {
     return (
       <>
-        <h6>Items still available:</h6>
-        <p>You haven't got any items listed!</p>
+        <div className="listingItemsAvailable">
+          <h6>Items still available:</h6>
+          <p>You haven't got any available items listed! </p>
+        </div>
       </>
     );
   } else {
