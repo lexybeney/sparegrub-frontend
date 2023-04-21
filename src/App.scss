@@ -464,13 +464,13 @@ nav {
     .listingItemsAvailable {
       margin-bottom: 25px;
 
-      p {
+      > p {
         text-align: center;
       }
     }
 
     .collectedItems {
-      p {
+      > p {
         text-align: center;
       }
     }

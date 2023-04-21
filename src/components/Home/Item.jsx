@@ -20,7 +20,7 @@ const Item = (props) => {
     collection_details,
     item_id,
     distance,
-    date_added_to_basket,
+    date_item_listed,
   } = props.item;
   const dispatch = useDispatch();
 
@@ -81,7 +81,7 @@ const Item = (props) => {
       <p>{`Quantity: ${quantity}`}</p>
       <p>{`Extra details: ${extra_details}`}</p>
       <p>{`Collection details: ${collection_details}`}</p>
-      <p>{`Added on: ${new Date(date_added_to_basket).toDateString()}`}</p>
+      <p>{`Added on: ${new Date(date_item_listed).toDateString()}`}</p>
       <div className="location">
         <img alt="Location icon" src={locationIcon} />
         <p>{`${dist} miles`}</p>

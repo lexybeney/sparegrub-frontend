@@ -33,36 +33,18 @@ export const calcDistance = (lat1, lon1, lat2, lon2, unit) => {
     }
     dist = Math.acos(dist);
     dist = (dist * 180) / Math.PI;
-    dist = dist * 60 * 1.1515;
+    dist = dist * 60 * 1.1515; //default in miles
     if (unit === "K") {
+      //km
       dist = dist * 1.609344;
     }
     if (unit === "N") {
+      //nautical miles
       dist = dist * 0.8684;
     }
 
     return dist;
   }
-};
-
-export const calcDistRussell = (lat_1, lon_1, lat_2, lon_2) => {
-  const R = 6371; // km
-  const dLat = toRad(lat_2 - lat_1);
-  const dLon = toRad(lon_2 - lon_1);
-  const lat1 = toRad(lat_1);
-  const lat2 = toRad(lat_2);
-
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  const d = R * c;
-  return d;
-};
-
-// Converts numeric degrees to radians
-export const toRad = (value) => {
-  return (value * Math.PI) / 180;
 };
 
 export const findLatAndLon = async (postcode) => {
