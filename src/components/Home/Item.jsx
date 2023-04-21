@@ -26,7 +26,6 @@ const Item = (props) => {
 
   const dist = Math.round(distance * 10) / 10;
 
-  console.log(props.item);
   const add = async () => {
     const user = await getUserData(token);
     const user_id = user.id;

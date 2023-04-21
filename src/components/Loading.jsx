@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
-import logo from "../assets/images/logos/logo_dark_bg.svg";
 import gsap from "gsap";
 
 const Loading = () => {
   const animation = () => {
     gsap.to(".animate", {
       duration: 2,
-      // y: 100,
       yPercent: 100,
-      // scale: 1,
       opacity: 1,
-      // delay: 0.5,
       stagger: 0.2,
       ease: "elastic",
       force3D: true,

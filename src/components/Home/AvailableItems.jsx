@@ -27,12 +27,6 @@ const AvailableItems = () => {
 
   let items = [...liveItems];
 
-  if (searchTerm) {
-    items = items.filter((product) => {
-      return product.item_name.toLowerCase().includes(searchTerm.toLowerCase());
-    });
-  }
-
   if (itemsRetrieved === false) {
     return (
       <>
@@ -43,6 +37,13 @@ const AvailableItems = () => {
       </>
     );
   }
+
+  if (searchTerm) {
+    items = items.filter((product) => {
+      return product.item_name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+  }
+
   const range_preference = user.range_preference.split(" ")[0];
   const itemsInRange = [];
   items.map(async (item) => {
@@ -77,21 +78,20 @@ const AvailableItems = () => {
         </h4>
       </div>
     );
-  } else {
-    return (
-      <div className="availableItemListing">
-        <Row>
-          {itemsInRange.map((item) => {
-            return (
-              <Col xs={12} md={6} xl={4}>
-                <Item key={item.item_id} item={item} />{" "}
-              </Col>
-            );
-          })}
-        </Row>
-      </div>
-    );
   }
+  return (
+    <div className="availableItemListing">
+      <Row>
+        {itemsInRange.map((item) => {
+          return (
+            <Col key={item.item_id} xs={12} md={6} xl={4}>
+              <Item item={item} />{" "}
+            </Col>
+          );
+        })}
+      </Row>
+    </div>
+  );
 };
 
 export default AvailableItems;
