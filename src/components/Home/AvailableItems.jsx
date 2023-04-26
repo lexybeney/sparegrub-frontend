@@ -67,8 +67,6 @@ const AvailableItems = () => {
     }
   });
 
-  console.log(itemsInRange);
-
   if (items.length < 1 || itemsInRange < 1) {
     return (
       <div className="emptyErrorMessage">

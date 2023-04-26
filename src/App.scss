@@ -97,7 +97,8 @@ nav {
 }
 
 .mainContainer {
-  margin-top: $headerHeight + 25px;
+  margin-top: $headerHeight;
+  padding-top: 1rem;
 
   h1 {
     text-align: center;
@@ -317,7 +318,7 @@ nav {
     }
 
     .availableItemListing {
-      margin-top: $headerHeight + $searchBarHeight;
+      margin-top: $searchBarHeight;
     }
   }
 
@@ -326,10 +327,12 @@ nav {
     margin-bottom: 25px;
     padding-right: 15px;
     padding-left: 15px;
+    padding-top: 20px;
     max-width: 650px;
 
     h1 {
       margin-bottom: 10px;
+      margin-top: -10px;
     }
 
     ::placeholder {
@@ -423,12 +426,13 @@ nav {
       justify-content: center;
       align-items: center;
       color: $mainGreen;
-      position: fixed;
-      top: $headerHeight;
-      left: 0;
-      height: 100vh;
-      margin-top: -$navBarHeight;
-      width: 100vw;
+      // position: fixed;
+      // top: $headerHeight;
+      // left: 0;
+      height: 50vh;
+      // margin-top: -$navBarHeight;
+      margin: 0 auto;
+      // width: 100vw;
 
       img {
         width: 10vw;
@@ -571,8 +575,29 @@ nav {
 @media (min-width: 470px) {
   .mainContainer {
     .profilePage {
+      padding: 1rem 0;
       margin: 0 auto;
-      max-width: 430px;
+      // margin-bottom: 1rem;
+      max-width: 530px;
+      background-color: #ffffff;
+
+      .profileButton {
+        max-width: 430px;
+        margin: 0 auto;
+      }
+
+      .row {
+        max-width: 430px;
+        margin: 0 auto;
+      }
+    }
+
+    .basketPage {
+      padding: 1rem 2rem;
+    }
+
+    .listingPage {
+      padding: 1rem 3rem;
     }
   }
 }
@@ -584,6 +609,9 @@ nav {
 }
 
 @media (min-width: 700px) {
+  body {
+    background-color: #f7f7f7;
+  }
   nav {
     display: none;
   }
@@ -607,8 +635,18 @@ nav {
   }
 
   .mainContainer {
+    background-color: #f7f7f7;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+
+    .profilePage {
+      padding-top: 2rem;
+    }
+
     .addToListingPage {
       margin-top: 10px;
+      background-color: #ffffff;
+      padding: 1rem 2rem;
 
       .listingFields {
         font-size: 1.2rem;
@@ -626,6 +664,12 @@ nav {
     }
 
     .listingPage {
+      background-color: #ffffff;
+      margin-top: -2rem;
+      padding-top: 2rem;
+      padding-bottom: $navBarHeight;
+      margin-bottom: 0;
+
       .wideListing {
         display: flex;
 
@@ -660,6 +704,17 @@ nav {
         }
       }
     }
+    .basketPage {
+      background-color: #ffffff;
+      padding: 2rem;
+    }
+
+    .homePage {
+      margin-top: -2rem;
+      .searchArea {
+        background-color: #f7f7f7;
+      }
+    }
   }
 }
 
@@ -671,7 +726,7 @@ nav {
 
 @media (min-width: 1300px) {
   .mainContainer {
-    .homePage {
+    .homePage .availableItemListing {
       max-width: 1200px;
     }
   }
