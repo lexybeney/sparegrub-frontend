@@ -668,6 +668,7 @@ nav {
       padding-top: 2rem;
       padding-bottom: $navBarHeight;
       margin-bottom: 0;
+      margin-top: -2rem;
       height: 100vh;
 
       .wideListing {
@@ -725,6 +726,12 @@ nav {
 @media (min-width: 1100px) {
   .largeScreenNav {
     margin-right: 3rem;
+  }
+
+  .mainContainer {
+    .listingPage {
+      margin-top: 0;
+    }
   }
 }
 
