@@ -665,10 +665,10 @@ nav {
 
     .listingPage {
       background-color: #ffffff;
-      margin-top: -2rem;
       padding-top: 2rem;
       padding-bottom: $navBarHeight;
       margin-bottom: 0;
+      height: 100vh;
 
       .wideListing {
         display: flex;
@@ -685,7 +685,11 @@ nav {
       }
     }
     .addToListing {
-      bottom: 20px;
+      bottom: 0px;
+      height: 100px;
+      width: 1000px;
+      left: 50%;
+      transform: translateX(-50%);
 
       .btn-listing {
         height: 40px;
