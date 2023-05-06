@@ -33,7 +33,7 @@ This is the frontend repo, for the backend repo click [here](https://github.com/
 #### Clone this repo
 
 ```bash
-git clone https://github.com/George-xixi/hashtify
+git clone https://github.com/lexybeney/sparegrub-frontend.git
 ```
 
 #### Install dependencies
