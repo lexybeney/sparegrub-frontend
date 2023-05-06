@@ -52,7 +52,8 @@ npm start
 
 https://sparegrub.co.uk
 
-####a. Create your own profile
+#### a. Create your own profile
+
 Use an SW or TN postcode to see other items
 
 #### b. Login with the test account
