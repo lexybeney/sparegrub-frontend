@@ -60,3 +60,26 @@ Use an SW or TN postcode to see other items
 
 - Username: bakerbun
 - Password: hello!
+
+## Future development
+
+I have a number of aspects I would like to work on in the future, which I was unable to do in the first development phase due to time restraints. These are listed below:
+
+- Home page
+  - Lazy loading or 'load more' button
+  - Filter functionality e.g. distance, collection details (time of day)
+- Notifications
+- In-app messaging
+- Basket
+  - Show a countdown of items in cart with 'keep item' button that resets the counter
+  - Suggest other items by the same user if they already have one in the basket
+  - Group basket items by user
+  - Produce estimated CO2 emissions for each trip based on items in your basket
+- Password reset functionality
+- Edit items in your listing
+- Add to listing - ability to upload picture of food
+- Delete account button
+- Signup
+  - Specify error message if username or email already exists
+  - Don’t allow same phone number for users
+- Have ‘resend collection details’ button next to each item
