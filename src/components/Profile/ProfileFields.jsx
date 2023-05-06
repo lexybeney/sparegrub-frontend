@@ -20,7 +20,6 @@ const ProfileFields = (props) => {
                 <Form.Label>{field.label} </Form.Label>
               </Col>
               <Col className="profileField">
-                {" "}
                 {editing ? (
                   <>
                     <Form.Control

@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { SET_SCREEN_MODE } from "../../redux/types";
+import { BASKET } from "../consts";
 
 const CollectedItem = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
-      dispatch({ type: SET_SCREEN_MODE, payload: "Basket" });
+      dispatch({ type: SET_SCREEN_MODE, payload: BASKET });
     }, 3700);
   }, []);
 

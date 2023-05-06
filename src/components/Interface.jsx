@@ -20,6 +20,16 @@ import {
   getUserListing,
   getUserBasket,
 } from "../sparegrubApi/index";
+import {
+  HOME,
+  LOGIN,
+  SIGNUP,
+  BASKET,
+  PROFILE,
+  LISTING,
+  ADD_TO_LISTING,
+  COLLECTION_CONFIRMATION_WINDOW,
+} from "../components/consts";
 
 const Interface = () => {
   const screenMode = useSelector((state) => state.screenMode);
@@ -64,14 +74,14 @@ const Interface = () => {
     <>
       <Header />
       <div className="mainContainer">
-        {screenMode === "Login" && <Login />}
-        {screenMode === "Signup" && <Signup />}
-        {screenMode === "Home" && <Home />}
-        {screenMode === "Basket" && <Basket />}
-        {screenMode === "Profile" && <Profile />}
-        {screenMode === "Listing" && <Listing />}
-        {screenMode === "AddToListing" && <AddToListing />}
-        {screenMode === "Collection Confirmation Window" && (
+        {screenMode === LOGIN && <Login />}
+        {screenMode === SIGNUP && <Signup />}
+        {screenMode === HOME && <Home />}
+        {screenMode === BASKET && <Basket />}
+        {screenMode === PROFILE && <Profile />}
+        {screenMode === LISTING && <Listing />}
+        {screenMode === ADD_TO_LISTING && <AddToListing />}
+        {screenMode === COLLECTION_CONFIRMATION_WINDOW && (
           <CollectionConfirmationWindow />
         )}
       </div>

@@ -6,12 +6,13 @@ import { useDispatch } from "react-redux";
 import { SET_SCREEN_MODE } from "../../redux/types";
 import addButton from "../../assets/images/icons/plus_sign_white.svg";
 import CollectedItems from "./CollectedItems";
+import { ADD_TO_LISTING } from "../consts";
 
 const Listing = () => {
   const dispatch = useDispatch();
 
   const addItem = () => {
-    dispatch({ type: SET_SCREEN_MODE, payload: "AddToListing" });
+    dispatch({ type: SET_SCREEN_MODE, payload: ADD_TO_LISTING });
   };
 
   return (

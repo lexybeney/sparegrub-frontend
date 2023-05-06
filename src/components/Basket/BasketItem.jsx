@@ -11,6 +11,7 @@ import { apiUrl } from "../../sparegrubApi/apiUrl";
 import axios from "axios";
 import { getUserData, getUserBasket } from "../../sparegrubApi";
 import bin from "../../assets/images/icons/bin_blue.svg";
+import { COLLECTION_CONFIRMATION_WINDOW } from "../consts";
 
 const BasketItem = (props) => {
   const [removing, setRemoving] = useState(false);
@@ -77,7 +78,7 @@ const BasketItem = (props) => {
       const basket = await getUserBasket(token, user_id);
       dispatch({
         type: SET_SCREEN_MODE,
-        payload: "Collection Confirmation Window",
+        payload: COLLECTION_CONFIRMATION_WINDOW,
       });
       dispatch({ type: REPLACE_BASKET, payload: basket });
     } else {

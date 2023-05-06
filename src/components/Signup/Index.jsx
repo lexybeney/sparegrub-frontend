@@ -17,6 +17,7 @@ import { apiUrl } from "../../sparegrubApi/apiUrl";
 import axios from "axios";
 import { getUserData } from "../../sparegrubApi";
 import { findLatAndLon } from "../../utils";
+import { HOME } from "../consts";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const Signup = () => {
         const user = await getUserData(token);
         dispatch({ type: CREATE_USER, payload: user });
         dispatch({ type: ADD_TOKEN, payload: token });
-        dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
+        dispatch({ type: SET_SCREEN_MODE, payload: HOME });
         dispatch({ type: REPLACE_BASKET, payload: [] });
         dispatch({ type: SET_USER_LISTING, payload: [] });
         dispatch({ type: SET_LISTING_COLLECTION, payload: [] });

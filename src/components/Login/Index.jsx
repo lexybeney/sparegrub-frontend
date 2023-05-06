@@ -14,6 +14,7 @@ import { validate } from "../../validation";
 import axios from "axios";
 import { apiUrl } from "../../sparegrubApi/apiUrl";
 import { getUserData, getUserListing, getUserBasket } from "../../sparegrubApi";
+import { HOME } from "../consts";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Login = () => {
         const token = results.data.token;
         setloginError((loginError = ""));
         dispatch({ type: ADD_TOKEN, payload: token });
-        dispatch({ type: SET_SCREEN_MODE, payload: "Home" });
+        dispatch({ type: SET_SCREEN_MODE, payload: HOME });
         const user = await getUserData(token);
         dispatch({ type: CREATE_USER, payload: user });
         const userListing = await getUserListing(token);

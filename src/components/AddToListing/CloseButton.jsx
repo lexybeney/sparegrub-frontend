@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { SET_SCREEN_MODE } from "../../redux/types";
+import { LISTING } from "../consts";
 
 const CloseButton = () => {
   const dispatch = useDispatch();
@@ -8,7 +9,7 @@ const CloseButton = () => {
     <div className="closeButton">
       <button
         onClick={() => {
-          dispatch({ type: SET_SCREEN_MODE, payload: "Listing" });
+          dispatch({ type: SET_SCREEN_MODE, payload: LISTING });
         }}
         type="button"
         className="btn-close"

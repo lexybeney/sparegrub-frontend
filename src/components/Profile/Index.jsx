@@ -10,6 +10,7 @@ import { apiUrl } from "../../sparegrubApi/apiUrl";
 import { getUserData } from "../../sparegrubApi";
 import { Button, Form } from "react-bootstrap";
 import { findLatAndLon } from "../../utils";
+import { LOGIN } from "../consts";
 
 const Profile = () => {
   const [editing, setEditing] = useState(false);
@@ -56,10 +57,10 @@ const Profile = () => {
         );
         const user = await getUserData(token);
         dispatch({ type: EDIT_PROFILE, payload: user });
-        setErrors((errors = {}));
+        setErrors({});
         setEditing(!editing);
       } else {
-        setErrors((errors = result));
+        setErrors(result);
       }
     } else {
       setEditing(!editing);
@@ -68,7 +69,7 @@ const Profile = () => {
 
   const logout = () => {
     dispatch({ type: LOGOUT, payload: "" });
-    dispatch({ type: SET_SCREEN_MODE, payload: "Login" });
+    dispatch({ type: SET_SCREEN_MODE, payload: LOGIN });
   };
 
   return (

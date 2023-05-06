@@ -15,6 +15,7 @@ import { getUserListing } from "../../sparegrubApi";
 import { Container, Form, Button, Spinner } from "react-bootstrap";
 import CloseButton from "./CloseButton";
 import { findLatAndLon } from "../../utils";
+import { LISTING } from "../consts";
 
 const AddToListing = () => {
   const token = useSelector((state) => state.token);
@@ -56,7 +57,7 @@ const AddToListing = () => {
       );
 
       dispatch({ type: ADD_TO_LISTING, payload: formObj });
-      dispatch({ type: SET_SCREEN_MODE, payload: "Listing" });
+      dispatch({ type: SET_SCREEN_MODE, payload: LISTING });
       const userListing = await getUserListing(token);
       dispatch({
         type: SET_USER_LISTING,

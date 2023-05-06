@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/images/logos/logo_dark_bg.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_SCREEN_MODE } from "../redux/types";
+import { BASKET, HOME, LISTING, LOGIN, PROFILE, SIGNUP } from "./consts";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -13,35 +14,35 @@ const Header = () => {
   return (
     <>
       <div className="header">
-        <img onClick={() => onClick("Home")} src={logo} alt="SpareGrub Logo" />
+        <img onClick={() => onClick(HOME)} src={logo} alt="SpareGrub Logo" />
         <div
           className={
-            screenMode === "Login" || screenMode === "Signup"
+            screenMode === LOGIN || screenMode === SIGNUP
               ? "hideNav"
               : "largeScreenNav"
           }
         >
           <button
-            onClick={() => onClick("Home")}
-            className={screenMode === "Home" ? "activePage" : ""}
+            onClick={() => onClick(HOME)}
+            className={screenMode === HOME ? "activePage" : ""}
           >
             Home
           </button>
           <button
-            onClick={() => onClick("Basket")}
-            className={screenMode === "Basket" ? "activePage" : ""}
+            onClick={() => onClick(BASKET)}
+            className={screenMode === BASKET ? "activePage" : ""}
           >
             Basket
           </button>
           <button
-            onClick={() => onClick("Profile")}
-            className={screenMode === "Profile" ? "activePage" : ""}
+            onClick={() => onClick(PROFILE)}
+            className={screenMode === PROFILE ? "activePage" : ""}
           >
             Profile
           </button>
           <button
-            onClick={() => onClick("Listing")}
-            className={screenMode === "Listing" ? "activePage" : ""}
+            onClick={() => onClick(LISTING)}
+            className={screenMode === LISTING ? "activePage" : ""}
           >
             Listing
           </button>
