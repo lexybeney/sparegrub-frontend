@@ -4,7 +4,7 @@
 
 ## The concept
 
-As part of my software development bootcamp, I had to come up with an idea for my final project to demonstrate my understanding of React. SpareGrub was created as my answer to reducing food wastage.
+As part of my software development bootcamp, I had to come up with an idea for my final project to demonstrate my understanding of React. [SpareGrub](https://sparegrub.co.uk) was created as my answer to reducing food wastage.
 
 This is the frontend repo, for the backend repo click [here](https://github.com/lexybeney/sparegrub-backend).
 
