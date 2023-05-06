@@ -2,12 +2,13 @@
 
 # SpareGrub - Reducing Food Wastage
 
-##The concept
+## The concept
+
 As part of my software development bootcamp, I had to come up with an idea for my final project to demonstrate my understanding of React. SpareGrub was created as my answer to reducing food wastage.
 
 This is the frontend repo, for the backend repo click [here](https://github.com/lexybeney/sparegrub-backend).
 
-##What I used
+## What I used
 
 - React ([Create React App](https://github.com/facebook/create-react-app))
 - [Axios](https://github.com/axios/axios) for API calls
@@ -17,7 +18,7 @@ This is the frontend repo, for the backend repo click [here](https://github.com/
 - [Bing Maps](https://learn.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-address) for forward geocoding
 - [GSAP](https://github.com/greensock/GSAP) for animation
 
-##Main features
+## Main features
 
 - Create an account
 - Search for available items in your area
@@ -25,7 +26,7 @@ This is the frontend repo, for the backend repo click [here](https://github.com/
 - Edit your profile
 - Add items to your personal listing for collection
 
-##How to use
+## How to use
 
 ### 1. To run locally
 
